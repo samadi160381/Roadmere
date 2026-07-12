@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roadmere — Every road leads somewhere worth stopping</title>
+<meta name="description" content="Plan road trip routes, read stories from travelers who drove them first, and book ready-mapped trips and flights — all in one place at Roadmere.">
+<meta name="keywords" content="road trip planner, travel routes, road trip stories, flight booking, trip planning, travel inspiration">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Roadmere">
+<link rel="canonical" href="https://roadmere.com/">
+
+<!-- Open Graph / Facebook / Slack / iMessage -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://roadmere.com/">
+<meta property="og:title" content="Roadmere — Every road leads somewhere worth stopping">
+<meta property="og:description" content="Plan road trip routes, read stories from travelers who drove them first, and book ready-mapped trips and flights — all in one place.">
+<meta property="og:image" content="https://roadmere.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Roadmere">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Roadmere — Every road leads somewhere worth stopping">
+<meta name="twitter:description" content="Plan road trip routes, read stories from travelers who drove them first, and book ready-mapped trips.">
+<meta name="twitter:image" content="https://roadmere.com/og-image.jpg">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ccircle cx='100' cy='100' r='96' fill='%231F3A3D'/%3E%3Cpath d='M20 100 A80 80 0 0 1 180 100 L180 130 L20 130 Z' fill='%232C4A45'/%3E%3Ccircle cx='100' cy='95' r='22' fill='%23E8A33D' opacity='0.9'/%3E%3Cpath d='M45 150 L82 62 L118 62 L155 150 Z' fill='%2333413F'/%3E%3Cline x1='100' y1='150' x2='100' y2='72' stroke='%23F6EFE4' stroke-width='4' stroke-dasharray='8 8'/%3E%3Cpath d='M95 62 C110 45 122 32 138 20' stroke='%23E8A33D' stroke-width='3' fill='none' stroke-linecap='round' opacity='0.85'/%3E%3Cpath d='M136 14 L152 22 L146 26 L136 22 L128 28 L124 26 Z' fill='%23E8A33D'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#1F3A3D">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,900&family=Tangerine:wght@400;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --dusk-deep:#1F3A3D;
+    --dusk-navy:#132628;
+    --clay:#C1502E;
+    --amber:#E8A33D;
+    --paper:#F6EFE4;
+    --ink:#2B2420;
+    --sand:#EAD9BE;
+    --sage:#6B7A5E;
+    --line: rgba(43,36,32,0.12);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    line-height:1.5;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    letter-spacing:-0.01em;
+  }
+  .mono{
+    font-family:'JetBrains Mono', monospace;
+  }
+  a{color:inherit; text-decoration:none;}
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+  ::selection{background:var(--amber); color:var(--dusk-navy);}
+
+  /* focus visibility */
+  a:focus-visible, button:focus-visible, input:focus-visible{
+    outline:2px solid var(--clay);
+    outline-offset:3px;
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(246,239,228,0.88);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:20px 32px;
+    max-width:1180px; margin:0 auto;
+  }
+  .logo{
+    font-family:'Tangerine', cursive;
+    font-weight:700;
+    font-size:2.7rem;
+    line-height:1;
+    letter-spacing:0;
+    color:var(--dusk-deep);
+    display:flex; align-items:center; gap:8px;
+  }
+  .logo .gold{color:var(--clay);}
+  .logo-icon{
+    width:36px; height:36px;
+    flex-shrink:0;
+  }
+  .logo-icon svg{display:block; width:100%; height:100%;}
+  .logo-icon.small{width:26px; height:26px;}
+  .nav-links{
+    display:flex; gap:36px;
+    font-size:0.94rem;
+    font-weight:500;
+  }
+  .nav-links a{
+    position:relative;
+    padding-bottom:4px;
+  }
+  .nav-links a::after{
+    content:'';
+    position:absolute; left:0; bottom:0;
+    width:0; height:2px;
+    background:var(--clay);
+    transition:width 0.25s ease;
+  }
+  .nav-links a:hover::after{width:100%;}
+  .nav-cta{
+    background:var(--dusk-deep);
+    color:var(--paper) !important;
+    padding:10px 20px;
+    border-radius:100px;
+    font-size:0.9rem;
+    font-weight:600;
+    transition:background 0.2s ease, transform 0.2s ease;
+  }
+  .nav-cta:hover{background:var(--clay); transform:translateY(-1px);}
+  .nav-toggle{display:none;}
+
+  @media (max-width:820px){
+    .nav-links{display:none;}
+    .nav-toggle{display:block; background:none; border:none; font-size:1.5rem; color:var(--dusk-deep); cursor:pointer;}
+  }
+
+  /* ---------- ROUTE SPINE (signature element) ---------- */
+  #spine{
+    position:absolute;
+    top:0; left:50%;
+    width:2px;
+    height:100%;
+    transform:translateX(-50%);
+    z-index:0;
+    pointer-events:none;
+  }
+  #spine svg{display:block; width:100%; height:100%;}
+  #spine .route-path{
+    fill:none;
+    stroke:var(--clay);
+    stroke-width:3;
+    stroke-linecap:round;
+    stroke-dasharray:2 14;
+    opacity:0.35;
+  }
+  #spine-car{
+    position:absolute;
+    left:50%;
+    top:0;
+    width:34px; height:34px;
+    transform:translate(-50%,-50%);
+    z-index:2;
+    transition:top 0.05s linear;
+  }
+  @media (max-width:820px){ #spine{display:none;} }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:100px 32px 0;
+    overflow:hidden;
+    background:linear-gradient(180deg, var(--dusk-navy) 0%, var(--dusk-deep) 55%, #2C4A45 100%);
+    color:var(--paper);
+  }
+  .hero-inner{
+    max-width:1180px; margin:0 auto;
+    position:relative; z-index:3;
+    text-align:center;
+    padding-bottom:60px;
+  }
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.78rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--amber);
+    display:inline-flex; align-items:center; gap:10px;
+    margin-bottom:22px;
+  }
+  .eyebrow::before, .eyebrow::after{
+    content:'';
+    width:24px; height:1px;
+    background:var(--amber);
+    opacity:0.6;
+  }
+  .hero h1{
+    font-size:clamp(2.6rem, 6vw, 4.7rem);
+    line-height:1.04;
+    max-width:900px;
+    margin:0 auto 22px;
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--amber);
+  }
+  .hero p{
+    font-size:1.15rem;
+    max-width:560px;
+    margin:0 auto 40px;
+    color:rgba(246,239,228,0.8);
+  }
+  .hero-actions{
+    display:flex; gap:16px; justify-content:center; flex-wrap:wrap;
+    margin-bottom:70px;
+  }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:15px 28px;
+    border-radius:100px;
+    font-weight:600;
+    font-size:0.98rem;
+    border:1px solid transparent;
+    cursor:pointer;
+    transition:transform 0.2s ease, background 0.2s ease, border-color .2s ease;
+  }
+  .btn-primary{
+    background:var(--clay);
+    color:var(--paper);
+  }
+  .btn-primary:hover{transform:translateY(-2px); background:#A8431F;}
+  .btn-ghost{
+    background:transparent;
+    border-color:rgba(246,239,228,0.35);
+    color:var(--paper);
+  }
+  .btn-ghost:hover{border-color:var(--amber); color:var(--amber);}
+
+  /* horizon illustration */
+  .horizon{
+    position:relative;
+    height:220px;
+    z-index:2;
+  }
+  .horizon svg{position:absolute; bottom:-2px; left:0; width:100%; height:auto;}
+  .sun{
+    position:absolute;
+    bottom:40px; left:50%;
+    transform:translateX(-50%);
+    width:120px; height:120px;
+    border-radius:50%;
+    background:radial-gradient(circle at 35% 35%, var(--amber), var(--clay) 75%);
+    box-shadow:0 0 90px 10px rgba(232,163,61,0.35);
+    z-index:1;
+  }
+
+  /* odometer stats strip */
+  .stats{
+    position:relative; z-index:3;
+    background:var(--dusk-navy);
+    border-top:1px solid rgba(246,239,228,0.12);
+  }
+  .stats-inner{
+    max-width:1180px; margin:0 auto;
+    padding:26px 32px;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:20px;
+  }
+  .stat{
+    font-family:'JetBrains Mono', monospace;
+    color:var(--paper);
+    text-align:center;
+    flex:1;
+    min-width:140px;
+  }
+  .stat .num{
+    display:block;
+    font-size:1.5rem;
+    color:var(--amber);
+    font-weight:500;
+  }
+  .stat .lbl{
+    font-size:0.72rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:rgba(246,239,228,0.55);
+  }
+
+  /* ---------- SECTION GENERIC ---------- */
+  section{
+    position:relative;
+    padding:110px 0;
+  }
+  .section-head{
+    max-width:640px;
+    margin:0 auto 60px;
+    text-align:center;
+  }
+  .section-tag{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.78rem;
+    color:var(--clay);
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    margin-bottom:14px;
+    display:block;
+  }
+  .section-head h2{
+    font-size:clamp(2rem, 4vw, 2.8rem);
+    line-height:1.1;
+  }
+  .section-head p{
+    margin-top:16px;
+    color:rgba(43,36,32,0.68);
+    font-size:1.05rem;
+  }
+
+  /* ---------- FLIGHT SEARCH ---------- */
+  .flights{
+    position:relative; z-index:3;
+    background:var(--dusk-navy);
+    padding:0 32px 70px;
+    margin-top:-1px;
+  }
+  .flight-card{
+    max-width:920px; margin:0 auto;
+    background:rgba(246,239,228,0.06);
+    border:1px solid rgba(246,239,228,0.14);
+    border-radius:20px;
+    padding:32px;
+  }
+  .flight-card-head{
+    display:flex; align-items:center; justify-content:space-between;
+    margin-bottom:22px;
+    flex-wrap:wrap; gap:10px;
+  }
+  .flight-card-head h3{
+    color:var(--paper);
+    font-size:1.3rem;
+  }
+  .flight-badge{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.7rem;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--amber);
+    border:1px solid rgba(232,163,61,0.4);
+    padding:5px 12px;
+    border-radius:100px;
+  }
+  .flight-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr 1fr auto;
+    gap:14px;
+    align-items:end;
+  }
+  @media (max-width:860px){ .flight-grid{grid-template-columns:1fr 1fr;} }
+  .flight-field label{
+    display:block;
+    font-size:0.72rem;
+    text-transform:uppercase;
+    letter-spacing:0.07em;
+    color:rgba(246,239,228,0.5);
+    margin-bottom:8px;
+    font-weight:600;
+  }
+  .flight-field input{
+    width:100%;
+    border:1px solid rgba(246,239,228,0.18);
+    border-radius:10px;
+    padding:12px 12px;
+    font-family:'Inter', sans-serif;
+    font-size:0.95rem;
+    background:rgba(246,239,228,0.05);
+    color:var(--paper);
+  }
+  .flight-field input::placeholder{color:rgba(246,239,228,0.35);}
+  .flight-field input:focus{outline:none; border-color:var(--amber);}
+  .flight-grid .btn{grid-column:span 1; height:fit-content;}
+  @media (max-width:860px){ .flight-grid .btn{grid-column:1 / -1;} }
+  .flight-note{
+    margin-top:18px;
+    font-size:0.8rem;
+    font-family:'JetBrains Mono', monospace;
+    color:rgba(246,239,228,0.4);
+  }
+
+  /* ---------- PLANNER ---------- */
+  .planner{
+    background:var(--paper);
+  }
+  .planner-card{
+    max-width:920px;
+    margin:0 auto;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:24px;
+    padding:44px;
+    box-shadow:0 30px 60px -30px rgba(43,36,32,0.18);
+  }
+  .planner-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr auto;
+    gap:18px;
+    align-items:end;
+  }
+  @media (max-width:760px){ .planner-grid{grid-template-columns:1fr; } }
+  .field label{
+    display:block;
+    font-size:0.75rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--sage);
+    margin-bottom:8px;
+    font-weight:600;
+  }
+  .field input{
+    width:100%;
+    border:none;
+    border-bottom:2px solid var(--line);
+    padding:10px 2px;
+    font-family:'Fraunces', serif;
+    font-size:1.15rem;
+    background:transparent;
+    color:var(--ink);
+  }
+  .field input:focus{outline:none; border-color:var(--clay);}
+  .planner-grid .btn{white-space:nowrap; height:fit-content;}
+  .planner-note{
+    margin-top:22px;
+    font-size:0.88rem;
+    color:rgba(43,36,32,0.55);
+    font-family:'JetBrains Mono', monospace;
+  }
+
+  /* ---------- STORIES ---------- */
+  .stories{background:var(--sand);}
+  .story-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:28px;
+  }
+  @media (max-width:900px){ .story-grid{grid-template-columns:1fr;} }
+  .story-card{
+    background:var(--paper);
+    border-radius:20px;
+    overflow:hidden;
+    border:1px solid var(--line);
+    transition:transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .story-card:hover{transform:translateY(-6px); box-shadow:0 24px 40px -22px rgba(43,36,32,0.28);}
+  .story-photo{
+    height:190px;
+    position:relative;
+    display:flex; align-items:flex-end;
+    padding:16px;
+  }
+  .story-photo .mile{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.75rem;
+    background:rgba(19,38,40,0.75);
+    color:var(--amber);
+    padding:5px 10px;
+    border-radius:100px;
+    letter-spacing:0.05em;
+  }
+  .story-body{padding:22px 22px 26px;}
+  .story-body h3{font-size:1.25rem; margin-bottom:8px; line-height:1.25;}
+  .story-body p{font-size:0.92rem; color:rgba(43,36,32,0.65);}
+  .story-body .read{
+    display:inline-block;
+    margin-top:14px;
+    font-size:0.85rem;
+    font-weight:600;
+    color:var(--clay);
+  }
+
+  /* ---------- ROUTES / BOOKING ---------- */
+  .routes{background:var(--paper);}
+  .route-list{
+    display:flex; flex-direction:column;
+    max-width:900px; margin:0 auto;
+    border-top:1px solid var(--line);
+  }
+  .route-row{
+    display:grid;
+    grid-template-columns:120px 1fr auto auto;
+    align-items:center;
+    gap:24px;
+    padding:26px 8px;
+    border-bottom:1px solid var(--line);
+    transition:background 0.2s ease;
+  }
+  .route-row:hover{background:rgba(193,80,46,0.04);}
+  @media (max-width:700px){
+    .route-row{grid-template-columns:1fr; text-align:left; gap:8px;}
+  }
+  .route-days{
+    font-family:'JetBrains Mono', monospace;
+    color:var(--sage);
+    font-size:0.9rem;
+  }
+  .route-name{font-size:1.3rem;}
+  .route-name span{
+    display:block; font-size:0.85rem; font-weight:400;
+    color:rgba(43,36,32,0.55);
+    font-family:'Inter', sans-serif;
+    margin-top:4px;
+  }
+  .route-price{
+    font-family:'JetBrains Mono', monospace;
+    font-size:1rem;
+    color:var(--ink);
+    text-align:right;
+  }
+  .route-price small{display:block; font-size:0.7rem; color:rgba(43,36,32,0.5); font-weight:400;}
+  .route-cta{
+    padding:11px 20px;
+    border-radius:100px;
+    border:1.5px solid var(--dusk-deep);
+    font-size:0.85rem;
+    font-weight:600;
+    color:var(--dusk-deep);
+    transition:all 0.2s ease;
+    white-space:nowrap;
+  }
+  .route-cta:hover{background:var(--dusk-deep); color:var(--paper);}
+
+  /* ---------- NEWSLETTER / FOOTER ---------- */
+  .glovebox{
+    background:var(--dusk-deep);
+    color:var(--paper);
+    text-align:center;
+    padding:100px 32px;
+  }
+  .glovebox h2{font-size:clamp(2rem,4vw,2.6rem); margin-bottom:16px;}
+  .glovebox p{color:rgba(246,239,228,0.7); max-width:480px; margin:0 auto 34px;}
+  .glovebox form{
+    display:flex; justify-content:center; gap:10px; flex-wrap:wrap;
+  }
+  .glovebox input{
+    padding:14px 20px;
+    border-radius:100px;
+    border:1px solid rgba(246,239,228,0.25);
+    background:rgba(246,239,228,0.06);
+    color:var(--paper);
+    font-family:'Inter', sans-serif;
+    min-width:260px;
+  }
+  .glovebox input::placeholder{color:rgba(246,239,228,0.45);}
+  .glovebox input:focus{outline:none; border-color:var(--amber);}
+
+  footer{
+    background:var(--dusk-navy);
+    color:rgba(246,239,228,0.6);
+    padding:36px 32px;
+    font-size:0.85rem;
+  }
+  .footer-inner{
+    max-width:1180px; margin:0 auto;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px;
+  }
+  .footer-inner .logo{
+    color:var(--paper);
+    font-family:'Inter', sans-serif;
+    font-weight:600;
+    font-size:0.95rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    gap:10px;
+  }
+  .footer-inner .logo .gold{color:var(--amber);}
+
+  /* reveal animation */
+  .reveal{
+    opacity:0;
+    transform:translateY(24px);
+    transition:opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible{opacity:1; transform:translateY(0);}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .reveal{opacity:1; transform:none; transition:none;}
+    #spine-car{transition:none;}
+  }
+</style>
+</head>
+<body>
+
+<div id="spine">
+  <svg preserveAspectRatio="none" viewBox="0 0 2 1000">
+    <line class="route-path" x1="1" y1="0" x2="1" y2="1000"/>
+  </svg>
+  <svg id="spine-car" viewBox="0 0 24 24" fill="none">
+    <circle cx="12" cy="12" r="11" fill="#E8A33D"/>
+    <path d="M6 13.5L7.3 10a1 1 0 0 1 .95-.68h7.5a1 1 0 0 1 .95.68L17.9 13.5" stroke="#1F3A3D" stroke-width="1.2" stroke-linecap="round"/>
+    <rect x="5.5" y="13.3" width="13" height="3" rx="1.2" fill="#1F3A3D"/>
+    <circle cx="8.5" cy="16.6" r="1.3" fill="#E8A33D" stroke="#1F3A3D" stroke-width="0.8"/>
+    <circle cx="15.5" cy="16.6" r="1.3" fill="#E8A33D" stroke="#1F3A3D" stroke-width="0.8"/>
+  </svg>
+</div>
+
+<header>
+  <nav>
+    <a href="#" class="logo">
+      <span class="logo-icon">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="100" cy="100" r="96" fill="#1F3A3D"/>
+          <path d="M20 100 A80 80 0 0 1 180 100 L180 130 L20 130 Z" fill="#2C4A45"/>
+          <circle cx="100" cy="95" r="22" fill="#E8A33D" opacity="0.9"/>
+          <path d="M45 150 L82 62 L118 62 L155 150 Z" fill="#33413F"/>
+          <line x1="100" y1="150" x2="100" y2="72" stroke="#F6EFE4" stroke-width="4" stroke-dasharray="8 8"/>
+          <path d="M95 62 C110 45 122 32 138 20" stroke="#E8A33D" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.85"/>
+          <path d="M136 14 L152 22 L146 26 L136 22 L128 28 L124 26 Z" fill="#E8A33D"/>
+        </svg>
+      </span>
+      Road<span class="gold">Mere</span>
+    </a>
+    <div class="nav-links">
+      <a href="#flights">Flights</a>
+      <a href="#planner">Plan a Trip</a>
+      <a href="#stories">Stories</a>
+      <a href="#routes">Routes</a>
+    </div>
+    <a href="#planner" class="nav-cta">Start Planning</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <div class="hero-inner reveal">
+    <span class="eyebrow">Road trips &middot; mapped &amp; told</span>
+    <h1>Every road leads<br>somewhere <em>worth stopping.</em></h1>
+    <p>Plan the route, read the stories from travelers who drove it first, and book the stretch that speaks to you. All in one glovebox.</p>
+    <div class="hero-actions">
+      <a href="#planner" class="btn btn-primary">Plan Your Route →</a>
+      <a href="#stories" class="btn btn-ghost">Browse Stories</a>
+    </div>
+  </div>
+
+  <div class="horizon">
+    <div class="sun"></div>
+    <svg viewBox="0 0 1440 220" preserveAspectRatio="none">
+      <path d="M0,120 C240,60 400,160 640,110 C880,60 1040,150 1440,90 L1440,220 L0,220 Z" fill="#2C4A45"/>
+      <path d="M0,170 C300,130 500,190 720,150 C960,105 1180,180 1440,140 L1440,220 L0,220 Z" fill="#233F3B"/>
+      <!-- road -->
+      <path d="M600,220 L680,60 L760,60 L840,220 Z" fill="#16282B"/>
+      <line x1="720" y1="220" x2="720" y2="65" stroke="#E8A33D" stroke-width="3" stroke-dasharray="10 12" opacity="0.8"/>
+    </svg>
+  </div>
+
+  <div class="stats">
+    <div class="stats-inner">
+      <div class="stat"><span class="num">1,240</span><span class="lbl">Routes Mapped</span></div>
+      <div class="stat"><span class="num">48</span><span class="lbl">States Covered</span></div>
+      <div class="stat"><span class="num">12,600</span><span class="lbl">Miles of Stories</span></div>
+      <div class="stat"><span class="num">6,800+</span><span class="lbl">Travelers on the Road</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="flights" id="flights">
+  <div class="flight-card reveal">
+    <div class="flight-card-head">
+      <h3>Search flights for your route</h3>
+      <span class="flight-badge">Powered by partner search</span>
+    </div>
+    <div class="flight-grid">
+      <div class="flight-field">
+        <label for="fl-from">From</label>
+        <input id="fl-from" type="text" placeholder="Austin (AUS)">
+      </div>
+      <div class="flight-field">
+        <label for="fl-to">To</label>
+        <input id="fl-to" type="text" placeholder="Los Angeles (LAX)">
+      </div>
+      <div class="flight-field">
+        <label for="fl-depart">Depart</label>
+        <input id="fl-depart" type="text" placeholder="Sept 12">
+      </div>
+      <div class="flight-field">
+        <label for="fl-return">Return</label>
+        <input id="fl-return" type="text" placeholder="Sept 20">
+      </div>
+      <button class="btn btn-primary" type="button" onclick="alert('Connect a flight affiliate widget here — see the FLIGHT WIDGET comment in the HTML source for setup instructions.')">Search Flights →</button>
+    </div>
+    <p class="flight-note">// this box is ready to wire up — swap in a Travelpayouts, Skyscanner, or Kayak affiliate widget to make it live</p>
+  </div>
+</div>
+
+<!--
+  FLIGHT WIDGET SETUP — read this when you're ready to go live
+
+  This search box is currently a static placeholder (it doesn't return real
+  flights yet). To make it functional and start earning affiliate revenue:
+
+  1. Sign up free at https://www.travelpayouts.com (or Kiwi.com Affiliate,
+     or Skyscanner's own partner program if you qualify for direct access).
+  2. Travelpayouts gives you a white-label flight search widget — real
+     live prices, real booking flow — with your affiliate ID baked in.
+  3. They give you an embed snippet (a <script> tag + a <div>). Replace
+     the .flight-card block above with that snippet, keeping the outer
+     <div class="flights" id="flights"> wrapper for the styling/background.
+  4. Every booking made through that widget earns you a commission
+     automatically — no deals with individual airlines needed.
+
+  Until then, this box is safe to leave as-is; it just shows a message
+  instead of searching.
+-->
+
+<section class="planner" id="planner">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="section-tag">Trip Planner</span>
+      <h2>Where's the road taking you?</h2>
+      <p>Tell us your start and your someday. We'll lay out the route, the stops, and the stories along the way.</p>
+    </div>
+
+    <div class="planner-card reveal">
+      <div class="planner-grid">
+        <div class="field">
+          <label for="from">From</label>
+          <input id="from" type="text" placeholder="Austin, TX">
+        </div>
+        <div class="field">
+          <label for="to">To</label>
+          <input id="to" type="text" placeholder="Big Sur, CA">
+        </div>
+        <div class="field">
+          <label for="dates">When</label>
+          <input id="dates" type="text" placeholder="Sept 12 – 20">
+        </div>
+        <button class="btn btn-primary" type="button">Map It →</button>
+      </div>
+      <p class="planner-note">// no bookings required to plan — save routes free, reserve stops when you're ready</p>
+    </div>
+  </div>
+</section>
+
+<section class="stories" id="stories">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="section-tag">From the Road</span>
+      <h2>Stories from travelers who drove it first</h2>
+      <p>Real routes, real detours, real diners worth the stop.</p>
+    </div>
+
+    <div class="story-grid">
+      <div class="story-card reveal">
+        <div class="story-photo" style="background:linear-gradient(160deg,#C1502E,#7A3319);">
+          <span class="mile">MILE 214</span>
+        </div>
+        <div class="story-body">
+          <h3>The slow way through the Ozarks</h3>
+          <p>Three days off the interstate, following creek roads and a hand-drawn map from a gas station in Mountain View.</p>
+          <span class="read">Read the route →</span>
+        </div>
+      </div>
+
+      <div class="story-card reveal">
+        <div class="story-photo" style="background:linear-gradient(160deg,#E8A33D,#B5701F);">
+          <span class="mile">MILE 892</span>
+        </div>
+        <div class="story-body">
+          <h3>Chasing sunset on Highway 1</h3>
+          <p>What happens when you plan for four stops and end up making eleven — a Big Sur diary.</p>
+          <span class="read">Read the route →</span>
+        </div>
+      </div>
+
+      <div class="story-card reveal">
+        <div class="story-photo" style="background:linear-gradient(160deg,#6B7A5E,#3F4A36);">
+          <span class="mile">MILE 1,340</span>
+        </div>
+        <div class="story-body">
+          <h3>Two weeks, one van, no plan</h3>
+          <p>How a couple mapped the Pacific Northwest with nothing but a full tank and a list of waterfalls.</p>
+          <span class="read">Read the route →</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="routes" id="routes">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="section-tag">Featured Routes</span>
+      <h2>Ready-mapped routes you can book today</h2>
+      <p>Every stop researched, every night booked, every mile worth driving.</p>
+    </div>
+
+    <div class="route-list reveal">
+      <div class="route-row">
+        <span class="route-days">6 DAYS</span>
+        <span class="route-name">Blue Ridge Parkway Loop<span>Asheville → Shenandoah, 469 mi</span></span>
+        <span class="route-price">$890<small>per person</small></span>
+        <a href="#" class="route-cta">Reserve Route</a>
+      </div>
+      <div class="route-row">
+        <span class="route-days">9 DAYS</span>
+        <span class="route-name">Pacific Coast Highway<span>San Francisco → San Diego, 630 mi</span></span>
+        <span class="route-price">$1,420<small>per person</small></span>
+        <a href="#" class="route-cta">Reserve Route</a>
+      </div>
+      <div class="route-row">
+        <span class="route-days">5 DAYS</span>
+        <span class="route-name">Texas Hill Country Backroads<span>Austin → Marfa, 510 mi</span></span>
+        <span class="route-price">$740<small>per person</small></span>
+        <a href="#" class="route-cta">Reserve Route</a>
+      </div>
+      <div class="route-row">
+        <span class="route-days">11 DAYS</span>
+        <span class="route-name">Rockies to Redwoods<span>Denver → Eureka, 1,180 mi</span></span>
+        <span class="route-price">$2,050<small>per person</small></span>
+        <a href="#" class="route-cta">Reserve Route</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="glovebox reveal">
+  <h2>Keep something for the road</h2>
+  <p>One email a month — new routes, road-tested stops, and stories worth the detour.</p>
+  <form onsubmit="return false;">
+    <input type="email" placeholder="you@wherever.com" aria-label="Email address">
+    <button class="btn btn-primary" type="submit">Join the Glovebox</button>
+  </form>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <a href="#" class="logo">
+      <span class="logo-icon small">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="100" cy="100" r="96" fill="#1F3A3D"/>
+          <path d="M20 100 A80 80 0 0 1 180 100 L180 130 L20 130 Z" fill="#2C4A45"/>
+          <circle cx="100" cy="95" r="22" fill="#E8A33D" opacity="0.9"/>
+          <path d="M45 150 L82 62 L118 62 L155 150 Z" fill="#33413F"/>
+          <line x1="100" y1="150" x2="100" y2="72" stroke="#F6EFE4" stroke-width="4" stroke-dasharray="8 8"/>
+          <path d="M95 62 C110 45 122 32 138 20" stroke="#E8A33D" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.85"/>
+          <path d="M136 14 L152 22 L146 26 L136 22 L128 28 L124 26 Z" fill="#E8A33D"/>
+        </svg>
+      </span>
+      Road<span class="gold">Mere</span>
+    </a>
+    <span>© 2026 Roadmere. Every road leads somewhere.</span>
+  </div>
+</footer>
+
+<script>
+  // scroll reveal
+  const items = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, {threshold:0.12});
+  items.forEach(i => io.observe(i));
+
+  // spine car follows scroll position
+  const spine = document.getElementById('spine');
+  const car = document.getElementById('spine-car');
+  function updateCar(){
+    if(!spine) return;
+    const doc = document.documentElement;
+    const scrollTop = doc.scrollTop || document.body.scrollTop;
+    const scrollHeight = (doc.scrollHeight - doc.clientHeight) || 1;
+    const pct = Math.min(1, Math.max(0, scrollTop / scrollHeight));
+    car.style.top = (pct * 100) + '%';
+  }
+  document.addEventListener('scroll', updateCar, {passive:true});
+  updateCar();
+</script>
+
+</body>
+</html>

@@ -774,7 +774,7 @@
       <a href="#planner">Plan a Trip</a>
       <a href="#stories">Stories</a>
       <a href="#routes">Routes</a>
-      <a href="#contact">Contact</a>
+      <a href="contact.html">Contact</a>
     </div>
     <div class="nav-right">
       <button class="nav-search-btn" id="navSearchBtn" type="button" aria-label="Search Roadmere">
@@ -847,11 +847,11 @@
     <div class="flight-grid">
       <div class="flight-field">
         <label for="fl-from">From</label>
-        <input id="fl-from" type="text" placeholder="Austin (AUS)">
+        <input id="fl-from" type="text" placeholder="Austin (AUS)" list="cityList" autocomplete="off">
       </div>
       <div class="flight-field">
         <label for="fl-to">To</label>
-        <input id="fl-to" type="text" placeholder="Los Angeles (LAX)">
+        <input id="fl-to" type="text" placeholder="Los Angeles (LAX)" list="cityList" autocomplete="off">
       </div>
       <div class="flight-field">
         <label for="fl-depart">Depart</label>
@@ -899,11 +899,11 @@
       <div class="planner-grid">
         <div class="field">
           <label for="from">From</label>
-          <input id="from" type="text" placeholder="Austin, TX">
+          <input id="from" type="text" placeholder="Austin, TX" list="cityList" autocomplete="off">
         </div>
         <div class="field">
           <label for="to">To</label>
-          <input id="to" type="text" placeholder="Big Sur, CA">
+          <input id="to" type="text" placeholder="Big Sur, CA" list="cityList" autocomplete="off">
         </div>
         <div class="field">
           <label for="depart">Depart</label>
@@ -1004,53 +1004,6 @@
   </div>
 </section>
 
-<section class="contact" id="contact">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="section-tag">Contact</span>
-      <h2>Questions before you hit the road?</h2>
-      <p>Trip help, booking issues, partnership ideas — send it over and we'll get back to you.</p>
-    </div>
-
-    <div class="contact-grid reveal">
-      <form class="contact-form" id="contactForm">
-        <div class="field">
-          <label for="c-name">Name</label>
-          <input id="c-name" type="text" placeholder="Jordan Rivera" required>
-        </div>
-        <div class="field">
-          <label for="c-email">Email</label>
-          <input id="c-email" type="email" placeholder="you@wherever.com" required>
-        </div>
-        <div class="field">
-          <label for="c-message">Message</label>
-          <textarea id="c-message" rows="4" placeholder="Tell us where you're headed…" required></textarea>
-        </div>
-        <button class="btn btn-primary" type="submit">Send Message →</button>
-        <p class="contact-note">// opens your email app with this filled in — nothing is sent from this page directly</p>
-      </form>
-
-      <div class="contact-info">
-        <div class="contact-info-block">
-          <span class="section-tag">Email</span>
-          <a href="mailto:hello@roadmere.com">hello@roadmere.com</a>
-        </div>
-        <div class="contact-info-block">
-          <span class="section-tag">Support</span>
-          <a href="mailto:support@roadmere.com">support@roadmere.com</a>
-        </div>
-        <div class="contact-info-block">
-          <span class="section-tag">Follow</span>
-          <div class="contact-social">
-            <a href="#" aria-label="Instagram">Instagram</a>
-            <a href="#" aria-label="TikTok">TikTok</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <div class="glovebox reveal">
   <h2>Keep something for the road</h2>
   <p>One email a month — new routes, road-tested stops, and stories worth the detour.</p>
@@ -1069,6 +1022,60 @@
     <span>© 2026 Roadmere. Every road leads somewhere.</span>
   </div>
 </footer>
+
+<datalist id="cityList">
+  <option value="Austin, TX">
+  <option value="Big Sur, CA">
+  <option value="San Francisco, CA">
+  <option value="San Diego, CA">
+  <option value="Los Angeles, CA">
+  <option value="Las Vegas, NV">
+  <option value="Denver, CO">
+  <option value="Eureka, CA">
+  <option value="Marfa, TX">
+  <option value="Asheville, NC">
+  <option value="Shenandoah, VA">
+  <option value="Nashville, TN">
+  <option value="New Orleans, LA">
+  <option value="Miami, FL">
+  <option value="Orlando, FL">
+  <option value="Atlanta, GA">
+  <option value="Charleston, SC">
+  <option value="Savannah, GA">
+  <option value="New York, NY">
+  <option value="Boston, MA">
+  <option value="Chicago, IL">
+  <option value="Seattle, WA">
+  <option value="Portland, OR">
+  <option value="Phoenix, AZ">
+  <option value="Sedona, AZ">
+  <option value="Salt Lake City, UT">
+  <option value="Moab, UT">
+  <option value="Santa Fe, NM">
+  <option value="Albuquerque, NM">
+  <option value="Grand Canyon, AZ">
+  <option value="Yellowstone, WY">
+  <option value="Jackson Hole, WY">
+  <option value="Glacier National Park, MT">
+  <option value="Bozeman, MT">
+  <option value="Boise, ID">
+  <option value="Napa, CA">
+  <option value="Sonoma, CA">
+  <option value="Monterey, CA">
+  <option value="Palm Springs, CA">
+  <option value="Joshua Tree, CA">
+  <option value="Lake Tahoe, CA">
+  <option value="Portland, ME">
+  <option value="Burlington, VT">
+  <option value="Austin (AUS)">
+  <option value="Los Angeles (LAX)">
+  <option value="New York (JFK)">
+  <option value="Chicago (ORD)">
+  <option value="Denver (DEN)">
+  <option value="Miami (MIA)">
+  <option value="Seattle (SEA)">
+  <option value="San Francisco (SFO)">
+</datalist>
 
 <script>
   // scroll reveal
@@ -1155,7 +1162,7 @@
     {keys:['plan','trip','planner','route plan'], target:'#planner'},
     {keys:['story','stories','blog','read'], target:'#stories'},
     {keys:['route','routes','book','tour'], target:'#routes'},
-    {keys:['contact','email','support','help'], target:'#contact'}
+    {keys:['contact','email','support','help'], target:'contact.html'}
   ];
   function openSearch(){
     searchPanel.classList.add('open');
@@ -1176,8 +1183,13 @@
       const q = searchInput.value.trim().toLowerCase();
       if(!q) return;
       const match = searchMap.find(m => m.keys.some(k => q.includes(k) || k.includes(q)));
-      const target = document.querySelector(match ? match.target : '#stories');
-      if(target){ target.scrollIntoView({behavior:'smooth'}); closeSearch(); }
+      const targetSel = match ? match.target : '#stories';
+      if(targetSel.startsWith('#')){
+        const target = document.querySelector(targetSel);
+        if(target){ target.scrollIntoView({behavior:'smooth'}); closeSearch(); }
+      } else {
+        window.location.href = targetSel;
+      }
     });
   }
 

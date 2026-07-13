@@ -534,6 +534,25 @@
   .planner-result-cta{
     margin-left:auto;
   }
+  .planner-error{
+    border-top:1px dashed rgba(193,80,46,0.35);
+    padding-top:22px;
+    color:var(--clay);
+    font-size:0.92rem;
+  }
+  .planner-grid .btn:disabled{
+    opacity:0.65;
+    cursor:wait;
+    transform:none;
+  }
+  .loading-dot{
+    width:7px; height:7px; border-radius:50%;
+    background:currentColor;
+    display:inline-block;
+    animation:plannerPulse 0.9s ease-in-out infinite;
+    margin-left:2px;
+  }
+  @keyframes plannerPulse{ 0%,100%{opacity:0.25;} 50%{opacity:1;} }
 
   /* ---------- STORIES ---------- */
   .stories{background:var(--sand);}
@@ -1116,11 +1135,40 @@
     }, 4500);
   }
 
-  // trip planner — real feedback on click, based on entered cities
+  // trip planner — real route, distance, and drive time from live geocoding + routing services
   const mapBtn = document.getElementById('mapItBtn');
   const resultBox = document.getElementById('plannerResult');
+
+  // Geocode a place name to [lon, lat] using OpenStreetMap's free Nominatim service.
+  // Swap this for Mapbox Geocoding (https://docs.mapbox.com/api/search/geocoding/)
+  // or Google Geocoding for production — both give better matching + higher limits
+  // and don't rate-limit the way this free demo endpoint does.
+  async function geocodePlace(place){
+    const url = `https://nominatim.openstreetmap.org/search?format=json&limit=1&q=${encodeURIComponent(place)}`;
+    const res = await fetch(url, { headers: { 'Accept-Language': 'en' } });
+    if(!res.ok) throw new Error('Geocoding service unavailable — try again in a moment');
+    const data = await res.json();
+    if(!data.length) throw new Error(`Couldn't find "${place}" — try adding a state or country`);
+    return {
+      label: data[0].display_name.split(',').slice(0, 2).join(','),
+      lon: parseFloat(data[0].lon),
+      lat: parseFloat(data[0].lat)
+    };
+  }
+
+  // Get a driving route between two [lon, lat] points using OSRM's free public demo server.
+  // Swap this for Mapbox Directions API for production — the demo server has no uptime guarantee.
+  async function routeBetween(a, b){
+    const url = `https://router.project-osrm.org/route/v1/driving/${a.lon},${a.lat};${b.lon},${b.lat}?overview=false`;
+    const res = await fetch(url);
+    if(!res.ok) throw new Error('Routing service unavailable — try again in a moment');
+    const data = await res.json();
+    if(data.code !== 'Ok' || !data.routes.length) throw new Error('No drivable route found between those two places');
+    return data.routes[0]; // { distance: meters, duration: seconds }
+  }
+
   if(mapBtn){
-    mapBtn.addEventListener('click', () => {
+    mapBtn.addEventListener('click', async () => {
       const from = document.getElementById('from').value.trim() || 'Austin, TX';
       const to = document.getElementById('to').value.trim() || 'Big Sur, CA';
       const depart = document.getElementById('depart').value;
@@ -1128,27 +1176,40 @@
       const fmt = (d) => d ? new Date(d + 'T00:00:00').toLocaleDateString('en-US', {month:'short', day:'numeric'}) : null;
       const dateLabel = (fmt(depart) && fmt(returnDate)) ? `${fmt(depart)} – ${fmt(returnDate)}` : (fmt(depart) || 'dates flexible');
 
-      // lightweight distance estimate: deterministic pseudo-random from the city pair,
-      // so the same From/To always returns the same numbers
-      let seed = 0;
-      for(const ch of (from + to)) seed = (seed * 31 + ch.charCodeAt(0)) % 100000;
-      const miles = 380 + (seed % 1400);
-      const days = Math.max(2, Math.round(miles / 320));
-      const stops = Math.max(2, Math.round(miles / 260));
+      mapBtn.disabled = true;
+      const originalLabel = mapBtn.textContent;
+      mapBtn.innerHTML = 'Mapping<span class="loading-dot"></span>';
+      resultBox.classList.remove('show');
 
-      resultBox.innerHTML = `
-        <div class="planner-result-inner">
-          <div class="route-summary">Route mapped: <strong>${from}</strong> → <strong>${to}</strong></div>
-          <div class="planner-stat-row">
-            <div class="pstat"><b>${miles.toLocaleString()} mi</b>approx. distance</div>
-            <div class="pstat"><b>${days} days</b>suggested pace</div>
-            <div class="pstat"><b>${stops} stops</b>recommended</div>
-            <div class="pstat"><b>${dateLabel}</b>travel window</div>
+      try{
+        const [fromPlace, toPlace] = await Promise.all([geocodePlace(from), geocodePlace(to)]);
+        const r = await routeBetween(fromPlace, toPlace);
+
+        const miles = r.distance / 1609.34;
+        const hours = r.duration / 3600;
+        const days = Math.max(2, Math.round(hours / 6));
+        const stops = Math.max(0, Math.floor(miles / 400));
+
+        resultBox.innerHTML = `
+          <div class="planner-result-inner">
+            <div class="route-summary">Route mapped: <strong>${fromPlace.label}</strong> → <strong>${toPlace.label}</strong></div>
+            <div class="planner-stat-row">
+              <div class="pstat"><b>${Math.round(miles).toLocaleString()} mi</b>approx. distance</div>
+              <div class="pstat"><b>${hours.toFixed(1)}h</b>drive time</div>
+              <div class="pstat"><b>${days} days</b>suggested pace</div>
+              <div class="pstat"><b>${stops} stops</b>recommended</div>
+              <div class="pstat"><b>${dateLabel}</b>travel window</div>
+            </div>
+            <a href="#routes" class="btn btn-ghost planner-result-cta" style="border-color:var(--dusk-deep); color:var(--dusk-deep);">See similar routes →</a>
           </div>
-          <a href="#routes" class="btn btn-ghost planner-result-cta" style="border-color:var(--dusk-deep); color:var(--dusk-deep);">See similar routes →</a>
-        </div>
-      `;
-      resultBox.classList.add('show');
+        `;
+      } catch(err){
+        resultBox.innerHTML = `<div class="planner-error">${err.message || 'Something went wrong finding that route.'}</div>`;
+      } finally {
+        mapBtn.disabled = false;
+        mapBtn.textContent = originalLabel;
+        resultBox.classList.add('show');
+      }
     });
   }
 

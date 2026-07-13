@@ -866,11 +866,11 @@
     <div class="flight-grid">
       <div class="flight-field">
         <label for="fl-from">From</label>
-        <input id="fl-from" type="text" placeholder="Austin (AUS)" list="cityList" autocomplete="off">
+        <input id="fl-from" type="text" placeholder="London (LHR)" list="cityList" autocomplete="off">
       </div>
       <div class="flight-field">
         <label for="fl-to">To</label>
-        <input id="fl-to" type="text" placeholder="Los Angeles (LAX)" list="cityList" autocomplete="off">
+        <input id="fl-to" type="text" placeholder="Tokyo (HND)" list="cityList" autocomplete="off">
       </div>
       <div class="flight-field">
         <label for="fl-depart">Depart</label>
@@ -918,11 +918,11 @@
       <div class="planner-grid">
         <div class="field">
           <label for="from">From</label>
-          <input id="from" type="text" placeholder="Austin, TX" list="cityList" autocomplete="off">
+          <input id="from" type="text" placeholder="Lisbon, Portugal" list="cityList" autocomplete="off">
         </div>
         <div class="field">
           <label for="to">To</label>
-          <input id="to" type="text" placeholder="Big Sur, CA" list="cityList" autocomplete="off">
+          <input id="to" type="text" placeholder="Seville, Spain" list="cityList" autocomplete="off">
         </div>
         <div class="field">
           <label for="depart">Depart</label>
@@ -1008,15 +1008,15 @@
         <a href="#" class="route-cta">Reserve Route</a>
       </div>
       <div class="route-row">
-        <span class="route-days">5 DAYS</span>
-        <span class="route-name">Texas Hill Country Backroads<span>Austin → Marfa, 510 mi</span></span>
-        <span class="route-price">$740<small>per person</small></span>
+        <span class="route-days">7 DAYS</span>
+        <span class="route-name">Andalusian Backroads<span>Seville → Granada, 260 mi</span></span>
+        <span class="route-price">$980<small>per person</small></span>
         <a href="#" class="route-cta">Reserve Route</a>
       </div>
       <div class="route-row">
-        <span class="route-days">11 DAYS</span>
-        <span class="route-name">Rockies to Redwoods<span>Denver → Eureka, 1,180 mi</span></span>
-        <span class="route-price">$2,050<small>per person</small></span>
+        <span class="route-days">10 DAYS</span>
+        <span class="route-name">Ring Road Iceland<span>Reykjavik → Reykjavik, 830 mi</span></span>
+        <span class="route-price">$2,180<small>per person</small></span>
         <a href="#" class="route-cta">Reserve Route</a>
       </div>
     </div>
@@ -1094,6 +1094,50 @@
   <option value="Miami (MIA)">
   <option value="Seattle (SEA)">
   <option value="San Francisco (SFO)">
+  <!-- International road-trip destinations -->
+  <option value="Lisbon, Portugal">
+  <option value="Porto, Portugal">
+  <option value="Seville, Spain">
+  <option value="Barcelona, Spain">
+  <option value="Nice, France">
+  <option value="Provence, France">
+  <option value="Amalfi Coast, Italy">
+  <option value="Tuscany, Italy">
+  <option value="Dubrovnik, Croatia">
+  <option value="Reykjavik, Iceland">
+  <option value="Edinburgh, Scotland">
+  <option value="Scottish Highlands, Scotland">
+  <option value="Cape Town, South Africa">
+  <option value="Marrakech, Morocco">
+  <option value="Queenstown, New Zealand">
+  <option value="Sydney, Australia">
+  <option value="Great Ocean Road, Australia">
+  <option value="Kyoto, Japan">
+  <option value="Tokyo, Japan">
+  <option value="Banff, Canada">
+  <option value="Vancouver, Canada">
+  <option value="Ubud, Bali, Indonesia">
+  <option value="Patagonia, Chile">
+  <option value="Buenos Aires, Argentina">
+  <!-- International airports -->
+  <option value="London (LHR)">
+  <option value="Paris (CDG)">
+  <option value="Lisbon (LIS)">
+  <option value="Barcelona (BCN)">
+  <option value="Rome (FCO)">
+  <option value="Amsterdam (AMS)">
+  <option value="Dublin (DUB)">
+  <option value="Reykjavik (KEF)">
+  <option value="Tokyo (HND)">
+  <option value="Singapore (SIN)">
+  <option value="Sydney (SYD)">
+  <option value="Auckland (AKL)">
+  <option value="Cape Town (CPT)">
+  <option value="Dubai (DXB)">
+  <option value="Toronto (YYZ)">
+  <option value="Vancouver (YVR)">
+  <option value="Mexico City (MEX)">
+  <option value="São Paulo (GRU)">
 </datalist>
 
 <script>
@@ -1169,8 +1213,8 @@
 
   if(mapBtn){
     mapBtn.addEventListener('click', async () => {
-      const from = document.getElementById('from').value.trim() || 'Austin, TX';
-      const to = document.getElementById('to').value.trim() || 'Big Sur, CA';
+      const from = document.getElementById('from').value.trim() || 'Lisbon, Portugal';
+      const to = document.getElementById('to').value.trim() || 'Seville, Spain';
       const depart = document.getElementById('depart').value;
       const returnDate = document.getElementById('return-date').value;
       const fmt = (d) => d ? new Date(d + 'T00:00:00').toLocaleDateString('en-US', {month:'short', day:'numeric'}) : null;

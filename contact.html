@@ -394,29 +394,82 @@ footer{background:var(--dusk-navy); color:rgba(246,239,228,0.6); padding:32px 32
 .search-result-item p{font-size:0.85rem; color:rgba(43,36,32,0.6); margin-top:2px;}
 .search-empty{padding:16px 4px; font-size:0.9rem; color:rgba(43,36,32,0.5);}
 .search-hint{margin-top:14px; font-size:0.78rem; color:rgba(43,36,32,0.4);}
+
+/* ---------- CONTACT PAGE ---------- */
+.contact-hero{
+  background:linear-gradient(180deg, var(--dusk-navy) 0%, var(--dusk-deep) 100%);
+  color:var(--paper);
+  padding:90px 32px 70px;
+  text-align:center;
+}
+.contact-hero .eyebrow{margin-bottom:18px;}
+.contact-hero h1{font-size:clamp(2.2rem, 4.8vw, 3.4rem); max-width:700px; margin:0 auto 16px;}
+.contact-hero p{font-size:1.05rem; max-width:520px; margin:0 auto; color:rgba(246,239,228,0.8);}
+
+.contact-section{background:var(--paper);}
+.contact-grid{
+  display:grid; grid-template-columns:1.1fr 0.9fr; gap:48px;
+  max-width:1000px; margin:0 auto;
+  align-items:start;
+}
+@media (max-width:820px){ .contact-grid{grid-template-columns:1fr; gap:40px;} }
+
+.contact-form{
+  background:#fff; border:1px solid var(--line); border-radius:20px; padding:36px;
+  box-shadow:0 30px 60px -30px rgba(43,36,32,0.15);
+}
+.contact-form .field{margin-bottom:20px;}
+.contact-form label{
+  display:block; font-size:0.75rem; text-transform:uppercase; letter-spacing:0.08em;
+  color:var(--sage); margin-bottom:8px; font-weight:600;
+}
+.contact-form input, .contact-form textarea{
+  width:100%; border:none; border-bottom:2px solid var(--line);
+  padding:10px 2px; font-family:'Inter', sans-serif; font-size:1rem;
+  background:transparent; color:var(--ink); resize:vertical;
+}
+.contact-form textarea{min-height:120px; font-family:'Inter', sans-serif;}
+.contact-form input:focus, .contact-form textarea:focus{outline:none; border-color:var(--clay);}
+.contact-form .btn{width:100%; justify-content:center; margin-top:6px;}
+.contact-form-note{margin-top:16px; font-size:0.85rem; color:rgba(43,36,32,0.55); text-align:center;}
+.contact-success{
+  display:none; margin-top:20px; padding:16px 18px; border-radius:14px;
+  background:rgba(107,122,94,0.12); border:1px solid rgba(107,122,94,0.35);
+  font-size:0.92rem; color:var(--sage); font-weight:600;
+}
+.contact-success.show{display:block;}
+
+.contact-info{display:flex; flex-direction:column; gap:28px;}
+.contact-info-item .tag2{
+  font-size:0.75rem; font-weight:600; text-transform:uppercase; letter-spacing:0.08em;
+  color:var(--clay); margin-bottom:8px; display:block;
+}
+.contact-info-item h3{font-size:1.15rem; margin-bottom:6px;}
+.contact-info-item p{font-size:0.94rem; color:rgba(43,36,32,0.65);}
+.contact-info-item a{color:var(--clay); font-weight:600;}
 </style>
 </head>
 <body>
 
 <header>
 <nav>
-  <a href="#" class="logo">
+  <a href="index.html" class="logo">
     <span class="logo-mark">
       <svg viewBox="0 0 200 200" fill="none"><circle cx="100" cy="100" r="96" fill="#1F3A3D"/><path d="M20 100 A80 80 0 0 1 180 100 L180 130 L20 130 Z" fill="#2C4A45"/><circle cx="100" cy="95" r="22" fill="#E8A33D" opacity="0.9"/><path d="M45 150 L82 62 L118 62 L155 150 Z" fill="#33413F"/><line x1="100" y1="150" x2="100" y2="72" stroke="#F6EFE4" stroke-width="4" stroke-dasharray="8 8"/></svg>
     </span>
     Roadmere<span class="gold">.</span>
   </a>
   <div class="nav-links" id="navLinks">
-    <a href="#planner">Plan a route</a>
-    <a href="#stories">Stories</a>
-    <a href="#routes">Ready-made routes</a>
-    <a href="contact.html">Contact</a>
+    <a href="index.html#planner">Plan a route</a>
+    <a href="index.html#stories">Stories</a>
+    <a href="index.html#routes">Ready-made routes</a>
+    <a href="contact.html" style="opacity:0.55;">Contact</a>
   </div>
   <div style="display:flex; align-items:center; gap:10px;">
     <button class="search-btn" id="searchOpenBtn" aria-label="Search Roadmere">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
     </button>
-    <a href="#planner" class="nav-cta">Plan Your Route</a>
+    <a href="index.html#planner" class="nav-cta">Plan Your Route</a>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
   </div>
 </nav>
@@ -434,141 +487,53 @@ footer{background:var(--dusk-navy); color:rgba(246,239,228,0.6); padding:32px 32
   </div>
 </div>
 
-<section class="hero">
-  <div class="hero-slider" id="heroSlider"></div>
-  <div class="hero-scrim"></div>
-  <div class="hero-inner">
-    <span class="eyebrow">Road trips · mapped &amp; told</span>
-    <h1>Every road leads somewhere <em>worth stopping.</em></h1>
-    <p>Plan the route, read the stories from travelers who drove it first, and book the stretch that speaks to you. All in one glovebox.</p>
-    <div class="hero-actions">
-      <a href="#planner" class="btn btn-primary" id="heroPlanBtn">Plan Your Route →</a>
-      <a href="#stories" class="btn btn-ghost">Browse Stories</a>
-    </div>
-    <div class="slider-dots" id="sliderDots"></div>
-  </div>
-  <div class="stats">
-    <div class="stats-inner">
-      <div class="stat"><span class="num">1,240</span><span class="lbl">Routes mapped</span></div>
-      <div class="stat"><span class="num">48</span><span class="lbl">Countries covered</span></div>
-      <div class="stat"><span class="num">12,600</span><span class="lbl">Miles of stories</span></div>
-      <div class="stat"><span class="num">6,800+</span><span class="lbl">Travelers on the road</span></div>
-    </div>
+<section class="contact-hero">
+  <div class="wrap">
+    <span class="eyebrow">Get in touch</span>
+    <h1>We'd love to hear about your next road.</h1>
+    <p>Questions about a route, a story you want to share, or a partnership idea — send it over and we'll get back to you within a couple of days.</p>
   </div>
 </section>
 
-<section class="planner" id="planner">
+<section class="contact-section">
   <div class="wrap">
-    <div class="section-head reveal">
-      <span class="section-tag">Plan a route</span>
-      <h2>Tell us where you're headed.</h2>
-      <p>Enter a start and an end point and we'll sketch a route, worth-a-stop towns included.</p>
-    </div>
-    <form class="planner-card reveal" id="plannerForm">
-      <div class="planner-grid">
+    <div class="contact-grid">
+      <form class="contact-form reveal" id="contactForm">
         <div class="field">
-          <label for="origin">Starting from</label>
-          <input type="text" id="origin" placeholder="e.g. Seattle, WA" required>
+          <label for="name">Name</label>
+          <input type="text" id="name" placeholder="Your name" required>
         </div>
         <div class="field">
-          <label for="destination">Heading to</label>
-          <input type="text" id="destination" placeholder="e.g. San Diego, CA" required>
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="you@email.com" required>
         </div>
         <div class="field">
-          <label for="depart">Departure date</label>
-          <input type="date" id="depart">
+          <label for="message">Message</label>
+          <textarea id="message" placeholder="Tell us what's on your mind…" required></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Plan Route →</button>
-      </div>
-      <p class="planner-note">We'll build a suggested route with stops along the way — no account needed.</p>
-      <div class="planner-result" id="plannerResult">
-        <h4 id="plannerResultTitle"></h4>
-        <p id="plannerResultBody"></p>
-      </div>
-    </form>
-  </div>
-</section>
+        <button type="submit" class="btn btn-primary">Send Message →</button>
+        <p class="contact-form-note">We typically reply within 2 business days.</p>
+        <div class="contact-success" id="contactSuccess">Thanks — your message is on its way. We'll be in touch soon.</div>
+      </form>
 
-<section class="stories" id="stories">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="section-tag">Field notes</span>
-      <h2>Stories from the road</h2>
-      <p>Real trips, real detours, written by the people who drove them.</p>
-    </div>
-    <div class="story-grid">
-      <div class="story-card reveal">
-        <div class="story-photo" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/File:Santorini,_Greece_(38051518795).jpg?width=800')">
-          <span class="mile">2,140 mi</span>
+      <div class="contact-info reveal">
+        <div class="contact-info-item">
+          <span class="tag2">Email</span>
+          <h3>General questions</h3>
+          <p><a href="mailto:hello@roadmere.com">hello@roadmere.com</a></p>
         </div>
-        <div class="story-body">
-          <h3>Chasing the Aegean coastline</h3>
-          <p>Three weeks island-hopping by ferry and rental car, ending on Santorini's caldera road at sunset.</p>
-          <a href="#" class="read">Read the story →</a>
+        <div class="contact-info-item">
+          <span class="tag2">Stories</span>
+          <h3>Share your road trip</h3>
+          <p>Want your story featured? Send a short pitch and a few photos to <a href="mailto:stories@roadmere.com">stories@roadmere.com</a>.</p>
         </div>
-      </div>
-      <div class="story-card reveal">
-        <div class="story-photo" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/File:Inscriptions_on_torii,_Fushimi_Inari_shrine,_Kyoto.jpg?width=800')">
-          <span class="mile">860 mi</span>
-        </div>
-        <div class="story-body">
-          <h3>Kyoto to the coast, backroads only</h3>
-          <p>A slow drive through Japan's countryside, torii gates, tea fields, and a lot of convenience-store rice balls.</p>
-          <a href="#" class="read">Read the story →</a>
-        </div>
-      </div>
-      <div class="story-card reveal">
-        <div class="story-photo" style="background-image:url('https://commons.wikimedia.org/wiki/Special:FilePath/File:Grand_Canyon_NP-Arizona-USA.jpg?width=800')">
-          <span class="mile">1,480 mi</span>
-        </div>
-        <div class="story-body">
-          <h3>The desert Southwest in a week</h3>
-          <p>Canyons, diners, and one memorable flat tire on the way from Phoenix to the South Rim.</p>
-          <a href="#" class="read">Read the story →</a>
+        <div class="contact-info-item">
+          <span class="tag2">Partnerships</span>
+          <h3>Routes &amp; lodging partners</h3>
+          <p>Interested in listing a route or stay on Roadmere? Reach out at <a href="mailto:partners@roadmere.com">partners@roadmere.com</a>.</p>
         </div>
       </div>
     </div>
-  </div>
-</section>
-
-<section class="routes" id="routes">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="section-tag">Ready-made</span>
-      <h2>Routes worth booking</h2>
-      <p>Pre-mapped trips with lodging and stops already sorted.</p>
-    </div>
-    <div class="route-list">
-      <div class="route-row reveal">
-        <div class="route-days">7 days</div>
-        <div class="route-name">Pacific Coast Highway<span>Seattle → San Diego</span></div>
-        <div class="route-price">$890<small>per person</small></div>
-        <a href="#planner" class="route-cta">Book route</a>
-      </div>
-      <div class="route-row reveal">
-        <div class="route-days">10 days</div>
-        <div class="route-name">The Alpine Loop<span>Zurich → Milan via the passes</span></div>
-        <div class="route-price">$1,240<small>per person</small></div>
-        <a href="#planner" class="route-cta">Book route</a>
-      </div>
-      <div class="route-row reveal">
-        <div class="route-days">5 days</div>
-        <div class="route-name">Kyoto Backroads<span>Kyoto → Kanazawa</span></div>
-        <div class="route-price">$640<small>per person</small></div>
-        <a href="#planner" class="route-cta">Book route</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="glovebox">
-  <div class="wrap">
-    <h2>Keep the glovebox stocked.</h2>
-    <p>New routes, new stories, once every couple of weeks. No spam, just good roads.</p>
-    <form onsubmit="event.preventDefault(); this.reset(); this.querySelector('button').textContent='Subscribed ✓';">
-      <input type="email" placeholder="you@email.com" required>
-      <button type="submit" class="btn btn-primary">Subscribe</button>
-    </form>
   </div>
 </section>
 
@@ -580,51 +545,6 @@ footer{background:var(--dusk-navy); color:rgba(246,239,228,0.6); padding:32px 32
 </footer>
 
 <script>
-// ---- Hero photo slider ----
-const destinations = [
-  { url: "https://commons.wikimedia.org/wiki/Special:FilePath/File:Santorini,_Greece_(38051518795).jpg?width=1600" },
-  { url: "https://commons.wikimedia.org/wiki/Special:FilePath/File:Machu_Picchu,_Peru.jpg?width=1600" },
-  { url: "https://commons.wikimedia.org/wiki/Special:FilePath/File:Badaling_China_Great-Wall-of-China-01.jpg?width=1600" },
-  { url: "https://commons.wikimedia.org/wiki/Special:FilePath/File:Tour_Eiffel_Wikimedia_Commons.jpg?width=1600" },
-  { url: "https://commons.wikimedia.org/wiki/Special:FilePath/File:Grand_Canyon_NP-Arizona-USA.jpg?width=1600" },
-  { url: "https://commons.wikimedia.org/wiki/Special:FilePath/File:Taj_Mahal,_Agra,_India.jpg?width=1600" },
-  { url: "https://commons.wikimedia.org/wiki/Special:FilePath/File:Inscriptions_on_torii,_Fushimi_Inari_shrine,_Kyoto.jpg?width=1600" },
-  { url: "https://commons.wikimedia.org/wiki/Special:FilePath/File:Zermatt_and_Matterhorn.jpg?width=1600" }
-];
-
-const sliderEl = document.getElementById('heroSlider');
-const dotsEl = document.getElementById('sliderDots');
-let current = 0;
-let timer;
-
-destinations.forEach((d, i) => {
-  const slide = document.createElement('div');
-  slide.className = 'hero-slide' + (i === 0 ? ' active' : '');
-  slide.style.backgroundImage = `url('${d.url}')`;
-  sliderEl.appendChild(slide);
-
-  const dot = document.createElement('button');
-  dot.setAttribute('aria-label', 'Show slide ' + (i + 1));
-  if (i === 0) dot.classList.add('active');
-  dot.addEventListener('click', () => goTo(i));
-  dotsEl.appendChild(dot);
-});
-
-const slideEls = sliderEl.querySelectorAll('.hero-slide');
-const dotEls = dotsEl.querySelectorAll('button');
-
-function goTo(i){
-  slideEls[current].classList.remove('active');
-  dotEls[current].classList.remove('active');
-  current = i;
-  slideEls[current].classList.add('active');
-  dotEls[current].classList.add('active');
-  restart();
-}
-function next(){ goTo((current + 1) % destinations.length); }
-function restart(){ clearInterval(timer); timer = setInterval(next, 5000); }
-restart();
-
 // ---- Mobile nav ----
 document.getElementById('navToggle').addEventListener('click', () => {
   document.getElementById('navLinks').classList.toggle('open');
@@ -637,47 +557,29 @@ const io = new IntersectionObserver((entries) => {
 }, { threshold: 0.15 });
 revealEls.forEach(el => io.observe(el));
 
-// ---- Functional planner form ----
-document.getElementById('plannerForm').addEventListener('submit', function(e){
+// ---- Contact form (client-side only) ----
+document.getElementById('contactForm').addEventListener('submit', function(e){
   e.preventDefault();
-  const origin = document.getElementById('origin').value.trim();
-  const destination = document.getElementById('destination').value.trim();
-  const depart = document.getElementById('depart').value;
-  if (!origin || !destination) return;
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const message = document.getElementById('message').value.trim();
+  if (!name || !email || !message) return;
 
-  const result = document.getElementById('plannerResult');
-  const title = document.getElementById('plannerResultTitle');
-  const body = document.getElementById('plannerResultBody');
-
-  const dateText = depart ? new Date(depart + 'T00:00:00').toLocaleDateString(undefined, { month:'long', day:'numeric', year:'numeric' }) : 'a date you choose';
-
-  title.textContent = `${origin} → ${destination}`;
-  body.textContent = `Route drafted for ${dateText}. We'll suggest overnight stops, drive times, and a few worth-a-detour towns along the way — check your inbox once you save this route.`;
-  result.classList.add('show');
-  result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  document.getElementById('contactSuccess').classList.add('show');
+  this.reset();
 });
 
-// If arriving with #planner, focus the first field for a real "jump to plan" feel
-if (window.location.hash === '#planner') {
-  const originField = document.getElementById('origin');
-  if (originField) setTimeout(() => originField.focus(), 500);
-}
-document.getElementById('heroPlanBtn').addEventListener('click', () => {
-  setTimeout(() => { const o = document.getElementById('origin'); if (o) o.focus(); }, 550);
-});
-
-// ---- Site search ----
+// ---- Site search (same index as home page) ----
 const searchIndex = [
-  { tag: 'Page', title: 'Plan a Route', desc: 'Enter a start and end point and get a suggested route.', url: '#planner' },
-  { tag: 'Page', title: 'Stories', desc: 'Real trips, real detours, written by the people who drove them.', url: '#stories' },
-  { tag: 'Page', title: 'Ready-made Routes', desc: 'Pre-mapped trips with lodging and stops already sorted.', url: '#routes' },
-  { tag: 'Page', title: 'Contact', desc: 'Get in touch with the Roadmere team.', url: 'contact.html' },
-  { tag: 'Story', title: 'Chasing the Aegean coastline', desc: "Three weeks island-hopping by ferry and rental car, ending on Santorini's caldera road at sunset.", url: '#stories' },
-  { tag: 'Story', title: 'Kyoto to the coast, backroads only', desc: "A slow drive through Japan's countryside, torii gates, tea fields, and a lot of convenience-store rice balls.", url: '#stories' },
-  { tag: 'Story', title: 'The desert Southwest in a week', desc: 'Canyons, diners, and one memorable flat tire on the way from Phoenix to the South Rim.', url: '#stories' },
-  { tag: 'Route', title: 'Pacific Coast Highway', desc: 'Seattle → San Diego · 7 days · $890 per person', url: '#routes' },
-  { tag: 'Route', title: 'The Alpine Loop', desc: 'Zurich → Milan via the passes · 10 days · $1,240 per person', url: '#routes' },
-  { tag: 'Route', title: 'Kyoto Backroads', desc: 'Kyoto → Kanazawa · 5 days · $640 per person', url: '#routes' }
+  { tag: 'Page', title: 'Plan a Route', desc: 'Enter a start and end point and get a suggested route.', url: 'index.html#planner' },
+  { tag: 'Page', title: 'Stories', desc: 'Real trips, real detours, written by the people who drove them.', url: 'index.html#stories' },
+  { tag: 'Page', title: 'Ready-made Routes', desc: 'Pre-mapped trips with lodging and stops already sorted.', url: 'index.html#routes' },
+  { tag: 'Story', title: 'Chasing the Aegean coastline', desc: "Three weeks island-hopping by ferry and rental car, ending on Santorini's caldera road at sunset.", url: 'index.html#stories' },
+  { tag: 'Story', title: 'Kyoto to the coast, backroads only', desc: "A slow drive through Japan's countryside, torii gates, tea fields, and a lot of convenience-store rice balls.", url: 'index.html#stories' },
+  { tag: 'Story', title: 'The desert Southwest in a week', desc: 'Canyons, diners, and one memorable flat tire on the way from Phoenix to the South Rim.', url: 'index.html#stories' },
+  { tag: 'Route', title: 'Pacific Coast Highway', desc: 'Seattle → San Diego · 7 days · $890 per person', url: 'index.html#routes' },
+  { tag: 'Route', title: 'The Alpine Loop', desc: 'Zurich → Milan via the passes · 10 days · $1,240 per person', url: 'index.html#routes' },
+  { tag: 'Route', title: 'Kyoto Backroads', desc: 'Kyoto → Kanazawa · 5 days · $640 per person', url: 'index.html#routes' }
 ];
 
 const searchOverlay = document.getElementById('searchOverlay');

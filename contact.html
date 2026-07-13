@@ -750,11 +750,30 @@
 
 <style>
   .contact-page-hero{
-    background:linear-gradient(180deg, var(--dusk-navy) 0%, var(--dusk-deep) 100%);
+    position:relative;
+    overflow:hidden;
+    background:var(--dusk-navy);
     color:var(--paper);
-    padding:70px 32px 50px;
+    padding:110px 32px 90px;
     text-align:center;
   }
+  .contact-page-hero .hero-slider{position:absolute; inset:0; z-index:0;}
+  .contact-page-hero .hero-slide{
+    position:absolute; inset:0;
+    background-size:cover;
+    background-position:center;
+    opacity:0;
+    transition:opacity 1.8s ease;
+  }
+  .contact-page-hero .hero-slide.active{opacity:1;}
+  .contact-page-hero .hero-scrim{
+    position:absolute; inset:0;
+    z-index:1;
+    background:
+      linear-gradient(180deg, rgba(19,38,40,0.78) 0%, rgba(19,38,40,0.6) 45%, rgba(19,38,40,0.88) 100%),
+      linear-gradient(90deg, rgba(19,38,40,0.4) 0%, rgba(19,38,40,0.15) 50%, rgba(19,38,40,0.4) 100%);
+  }
+  .contact-page-hero .hero-content{position:relative; z-index:2;}
   .contact-page-hero h1{font-size:clamp(2.2rem,5vw,3.2rem); margin-bottom:14px;}
   .contact-page-hero p{color:rgba(246,239,228,0.8); max-width:520px; margin:0 auto;}
   .contact-page-hero .eyebrow{margin-bottom:16px;}
@@ -802,9 +821,16 @@
 </header>
 
 <div class="contact-page-hero">
-  <span class="eyebrow">— We're here to help —</span>
-  <h1>Let's talk road trips</h1>
-  <p>Trip help, booking issues, partnership ideas — send it over and we'll get back to you.</p>
+  <div class="hero-slider" id="contactHeroSlider">
+    <div class="hero-slide active" style="background-image:url('images/slide7.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('images/slide8.jpg')"></div>
+  </div>
+  <div class="hero-scrim"></div>
+  <div class="hero-content">
+    <span class="eyebrow">— We're here to help —</span>
+    <h1>Let's talk road trips</h1>
+    <p>Trip help, booking issues, partnership ideas — send it over and we'll get back to you.</p>
+  </div>
 </div>
 
 <section class="contact" id="contact">
@@ -889,6 +915,31 @@
       const match = searchMap.find(m => m.keys.some(k => q.includes(k) || k.includes(q)));
       window.location.href = match ? match.target : 'index.html#stories';
     });
+  }
+
+  // reveal-on-scroll — without this, elements with class="reveal" stay at opacity:0 forever
+  const revealEls = document.querySelectorAll('.reveal');
+  if(revealEls.length){
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.15});
+    revealEls.forEach(el => revealObserver.observe(el));
+  }
+
+  // contact hero slider — cross-fades between the two background photos
+  const heroSlides = document.querySelectorAll('#contactHeroSlider .hero-slide');
+  if(heroSlides.length > 1){
+    let heroIndex = 0;
+    setInterval(() => {
+      heroSlides[heroIndex].classList.remove('active');
+      heroIndex = (heroIndex + 1) % heroSlides.length;
+      heroSlides[heroIndex].classList.add('active');
+    }, 5000);
   }
 
   // contact form — opens the visitor's email client with the message pre-filled

@@ -418,11 +418,14 @@
   }
   .flight-grid{
     display:grid;
-    grid-template-columns:1fr 1fr 1fr 1fr auto;
+    grid-template-columns:repeat(4, minmax(0, 1fr)) auto;
     gap:14px;
     align-items:end;
   }
-  @media (max-width:860px){ .flight-grid{grid-template-columns:1fr 1fr;} }
+  @media (max-width:860px){ .flight-grid{grid-template-columns:repeat(2, minmax(0, 1fr));} }
+  .flight-field{
+    min-width:0;
+  }
   .flight-field label{
     display:block;
     font-size:0.72rem;
@@ -433,10 +436,12 @@
     font-weight:600;
   }
   .flight-field input{
+    box-sizing:border-box;
     width:100%;
+    height:48px;
     border:1px solid rgba(246,239,228,0.18);
     border-radius:10px;
-    padding:12px 12px;
+    padding:0 12px;
     font-family:'Work Sans', sans-serif;
     font-size:0.95rem;
     background:rgba(246,239,228,0.05);
@@ -445,7 +450,7 @@
   .flight-field input::placeholder{color:rgba(246,239,228,0.35);}
   .flight-field input:focus{outline:none; border-color:var(--amber);}
   .flight-field input[type="date"]::-webkit-calendar-picker-indicator{filter:invert(1); opacity:0.8; cursor:pointer;}
-  .flight-grid .btn{grid-column:span 1; height:fit-content;}
+  .flight-grid .btn{grid-column:span 1; height:48px; box-sizing:border-box;}
   @media (max-width:860px){ .flight-grid .btn{grid-column:1 / -1;} }
   .flight-note{
     margin-top:18px;
@@ -469,12 +474,15 @@
   }
   .planner-grid{
     display:grid;
-    grid-template-columns:1.2fr 1.2fr 1fr 1fr auto;
+    grid-template-columns:minmax(0,1.2fr) minmax(0,1.2fr) minmax(0,1fr) minmax(0,1fr) auto;
     gap:16px;
     align-items:end;
   }
-  @media (max-width:900px){ .planner-grid{grid-template-columns:1fr 1fr;} }
-  @media (max-width:520px){ .planner-grid{grid-template-columns:1fr;} }
+  @media (max-width:900px){ .planner-grid{grid-template-columns:repeat(2, minmax(0,1fr));} }
+  @media (max-width:520px){ .planner-grid{grid-template-columns:minmax(0,1fr);} }
+  .field{
+    min-width:0;
+  }
   .field label{
     display:block;
     font-size:0.75rem;
@@ -485,7 +493,9 @@
     font-weight:600;
   }
   .field input{
+    box-sizing:border-box;
     width:100%;
+    height:44px;
     border:none;
     border-bottom:2px solid var(--line);
     padding:10px 2px;

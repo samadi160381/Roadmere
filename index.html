@@ -449,7 +449,15 @@
   }
   .flight-field input::placeholder{color:rgba(246,239,228,0.35);}
   .flight-field input:focus{outline:none; border-color:var(--amber);}
+  .flight-field input[type="date"]{
+    -webkit-appearance:none;
+    appearance:none;
+    min-width:100%;
+  }
   .flight-field input[type="date"]::-webkit-calendar-picker-indicator{filter:invert(1); opacity:0.8; cursor:pointer;}
+  .flight-field input[type="date"]::-webkit-date-and-time-value{
+    text-align:left;
+  }
   .flight-grid .btn{grid-column:span 1; height:48px; box-sizing:border-box;}
   @media (max-width:860px){ .flight-grid .btn{grid-column:1 / -1;} }
   .flight-note{
@@ -505,6 +513,14 @@
     color:var(--ink);
   }
   .field input:focus{outline:none; border-color:var(--clay);}
+  .field input[type="date"]{
+    -webkit-appearance:none;
+    appearance:none;
+    min-width:100%;
+  }
+  .field input[type="date"]::-webkit-date-and-time-value{
+    text-align:left;
+  }
   .planner-grid .btn{white-space:nowrap; height:fit-content;}
   .planner-note{
     margin-top:22px;

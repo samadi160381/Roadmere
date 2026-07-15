@@ -480,6 +480,53 @@
     padding:44px;
     box-shadow:0 30px 60px -30px rgba(43,36,32,0.18);
   }
+  .route-teaser-grid{
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:16px;
+  }
+  @media (max-width:640px){ .route-teaser-grid{grid-template-columns:minmax(0,1fr);} }
+  .route-teaser-card{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+    text-decoration:none;
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:20px 22px;
+    transition:transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .route-teaser-card:hover{
+    transform:translateY(-3px);
+    border-color:var(--clay);
+    box-shadow:0 20px 34px -24px rgba(43,36,32,0.28);
+  }
+  .route-teaser-card .rt-days{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.08em;
+    color:var(--sage);
+  }
+  .route-teaser-card h3{
+    font-size:1.2rem;
+    color:var(--ink);
+  }
+  .route-teaser-card .rt-path{
+    font-size:0.88rem;
+    color:rgba(43,36,32,0.6);
+  }
+  .route-teaser-card .rt-price{
+    margin-top:4px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.85rem;
+    color:var(--clay);
+    font-weight:600;
+  }
+  .route-teaser-cta{
+    display:flex;
+    width:fit-content;
+    margin:26px auto 0;
+  }
   .planner-grid{
     display:grid;
     grid-template-columns:minmax(0,1.2fr) minmax(0,1.2fr) minmax(0,1fr) minmax(0,1fr) auto;
@@ -937,32 +984,38 @@
     <div class="section-head reveal">
       <span class="section-tag">Trip Planner</span>
       <h2>Where's the road taking you?</h2>
-      <p>Tell us your start and your someday. We'll lay out the route, the stops, and the stories along the way.</p>
+      <p>Skip the blank page — start from a route someone's already driven, then make it yours.</p>
     </div>
 
     <div class="planner-card reveal">
-      <div class="planner-grid">
-        <div class="field">
-          <label for="from">From</label>
-          <input id="from" type="text" placeholder="Lisbon, Portugal" list="cityList" autocomplete="off">
-        </div>
-        <div class="field">
-          <label for="to">To</label>
-          <input id="to" type="text" placeholder="Seville, Spain" list="cityList" autocomplete="off">
-        </div>
-        <div class="field">
-          <label for="depart">Depart</label>
-          <input id="depart" type="date">
-        </div>
-        <div class="field">
-          <label for="return-date">Return</label>
-          <input id="return-date" type="date">
-        </div>
-        <button class="btn btn-primary" type="button" id="mapItBtn">Map It →</button>
+      <div class="route-teaser-grid">
+        <a href="#routes" class="route-teaser-card">
+          <span class="rt-days">7 DAYS</span>
+          <h3>Andalusian Backroads</h3>
+          <span class="rt-path">Seville → Granada · 260 mi</span>
+          <span class="rt-price">from $980</span>
+        </a>
+        <a href="#routes" class="route-teaser-card">
+          <span class="rt-days">9 DAYS</span>
+          <h3>Pacific Coast Highway</h3>
+          <span class="rt-path">San Francisco → San Diego · 630 mi</span>
+          <span class="rt-price">from $1,420</span>
+        </a>
+        <a href="#routes" class="route-teaser-card">
+          <span class="rt-days">6 DAYS</span>
+          <h3>Blue Ridge Parkway Loop</h3>
+          <span class="rt-path">Asheville → Shenandoah · 469 mi</span>
+          <span class="rt-price">from $890</span>
+        </a>
+        <a href="#routes" class="route-teaser-card">
+          <span class="rt-days">10 DAYS</span>
+          <h3>Ring Road Iceland</h3>
+          <span class="rt-path">Reykjavik → Reykjavik · 830 mi</span>
+          <span class="rt-price">from $2,180</span>
+        </a>
       </div>
-      <p class="planner-note">// no bookings required to plan — save routes free, reserve stops when you're ready</p>
-
-      <div id="plannerResult" class="planner-result"></div>
+      <a href="#routes" class="btn btn-primary route-teaser-cta">Browse all routes →</a>
+      <p class="planner-note">// no bookings required to browse — save routes free, reserve stops when you're ready</p>
     </div>
   </div>
 </section>
@@ -1008,6 +1061,17 @@
           <span class="read">Read the route →</span>
         </div>
       </div>
+
+      <a href="best-car-seats-for-road-trips-2026.html" class="story-card reveal" style="text-decoration:none; color:inherit;">
+        <div class="story-photo" style="background:linear-gradient(160deg,#1F3A3D,#132628);">
+          <span class="mile">GUIDE</span>
+        </div>
+        <div class="story-body">
+          <h3>Best car seats for road trips in 2026</h3>
+          <p>A family buying guide — convertible seats, travel boosters, and what actually holds up on long drives.</p>
+          <span class="read">Read the guide →</span>
+        </div>
+      </a>
     </div>
   </div>
 </section>
@@ -1203,84 +1267,6 @@
       slideIndex = (slideIndex + 1) % slides.length;
       showSlide(slideIndex);
     }, 4500);
-  }
-
-  // trip planner — real route, distance, and drive time from live geocoding + routing services
-  const mapBtn = document.getElementById('mapItBtn');
-  const resultBox = document.getElementById('plannerResult');
-
-  // Geocode a place name to [lon, lat] using OpenStreetMap's free Nominatim service.
-  // Swap this for Mapbox Geocoding (https://docs.mapbox.com/api/search/geocoding/)
-  // or Google Geocoding for production — both give better matching + higher limits
-  // and don't rate-limit the way this free demo endpoint does.
-  async function geocodePlace(place){
-    const url = `https://nominatim.openstreetmap.org/search?format=json&limit=1&q=${encodeURIComponent(place)}`;
-    const res = await fetch(url, { headers: { 'Accept-Language': 'en' } });
-    if(!res.ok) throw new Error('Geocoding service unavailable — try again in a moment');
-    const data = await res.json();
-    if(!data.length) throw new Error(`Couldn't find "${place}" — try adding a state or country`);
-    return {
-      label: data[0].display_name.split(',').slice(0, 2).join(','),
-      lon: parseFloat(data[0].lon),
-      lat: parseFloat(data[0].lat)
-    };
-  }
-
-  // Get a driving route between two [lon, lat] points using OSRM's free public demo server.
-  // Swap this for Mapbox Directions API for production — the demo server has no uptime guarantee.
-  async function routeBetween(a, b){
-    const url = `https://router.project-osrm.org/route/v1/driving/${a.lon},${a.lat};${b.lon},${b.lat}?overview=false`;
-    const res = await fetch(url);
-    if(!res.ok) throw new Error('Routing service unavailable — try again in a moment');
-    const data = await res.json();
-    if(data.code !== 'Ok' || !data.routes.length) throw new Error('No drivable route found between those two places');
-    return data.routes[0]; // { distance: meters, duration: seconds }
-  }
-
-  if(mapBtn){
-    mapBtn.addEventListener('click', async () => {
-      const from = document.getElementById('from').value.trim() || 'Lisbon, Portugal';
-      const to = document.getElementById('to').value.trim() || 'Seville, Spain';
-      const depart = document.getElementById('depart').value;
-      const returnDate = document.getElementById('return-date').value;
-      const fmt = (d) => d ? new Date(d + 'T00:00:00').toLocaleDateString('en-US', {month:'short', day:'numeric'}) : null;
-      const dateLabel = (fmt(depart) && fmt(returnDate)) ? `${fmt(depart)} – ${fmt(returnDate)}` : (fmt(depart) || 'dates flexible');
-
-      mapBtn.disabled = true;
-      const originalLabel = mapBtn.textContent;
-      mapBtn.innerHTML = 'Mapping<span class="loading-dot"></span>';
-      resultBox.classList.remove('show');
-
-      try{
-        const [fromPlace, toPlace] = await Promise.all([geocodePlace(from), geocodePlace(to)]);
-        const r = await routeBetween(fromPlace, toPlace);
-
-        const miles = r.distance / 1609.34;
-        const hours = r.duration / 3600;
-        const days = Math.max(2, Math.round(hours / 6));
-        const stops = Math.max(0, Math.floor(miles / 400));
-
-        resultBox.innerHTML = `
-          <div class="planner-result-inner">
-            <div class="route-summary">Route mapped: <strong>${fromPlace.label}</strong> → <strong>${toPlace.label}</strong></div>
-            <div class="planner-stat-row">
-              <div class="pstat"><b>${Math.round(miles).toLocaleString()} mi</b>approx. distance</div>
-              <div class="pstat"><b>${hours.toFixed(1)}h</b>drive time</div>
-              <div class="pstat"><b>${days} days</b>suggested pace</div>
-              <div class="pstat"><b>${stops} stops</b>recommended</div>
-              <div class="pstat"><b>${dateLabel}</b>travel window</div>
-            </div>
-            <a href="#routes" class="btn btn-ghost planner-result-cta" style="border-color:var(--dusk-deep); color:var(--dusk-deep);">See similar routes →</a>
-          </div>
-        `;
-      } catch(err){
-        resultBox.innerHTML = `<div class="planner-error">${err.message || 'Something went wrong finding that route.'}</div>`;
-      } finally {
-        mapBtn.disabled = false;
-        mapBtn.textContent = originalLabel;
-        resultBox.classList.add('show');
-      }
-    });
   }
 
   // nav search — toggle panel, jump to matching section on enter

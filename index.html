@@ -648,6 +648,24 @@
     position:relative;
     display:flex; align-items:flex-end;
     padding:16px;
+    overflow:hidden;
+  }
+  .story-photo img{
+    position:absolute;
+    inset:0;
+    width:100%; height:100%;
+    object-fit:cover;
+    z-index:0;
+  }
+  .story-photo::after{
+    content:'';
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(19,38,40,0) 40%, rgba(19,38,40,0.55) 100%);
+    z-index:1;
+  }
+  .story-photo .mile, .story-photo svg{
+    position:relative;
+    z-index:2;
   }
   .story-photo .mile{
     font-family:'JetBrains Mono', monospace;
@@ -1031,6 +1049,7 @@
     <div class="story-grid">
       <div class="story-card reveal">
         <div class="story-photo" style="background:linear-gradient(160deg,#C1502E,#7A3319);">
+          <img src="images/stories/ozarks-backroad.jpg" alt="Winding backroad through the Ozark forest" loading="lazy">
           <span class="mile">MILE 214</span>
         </div>
         <div class="story-body">
@@ -1042,6 +1061,7 @@
 
       <div class="story-card reveal">
         <div class="story-photo" style="background:linear-gradient(160deg,#E8A33D,#B5701F);">
+          <img src="images/stories/highway1-sunset.jpg" alt="Sunset over the coastline along Highway 1, Big Sur" loading="lazy">
           <span class="mile">MILE 892</span>
         </div>
         <div class="story-body">
@@ -1053,6 +1073,7 @@
 
       <div class="story-card reveal">
         <div class="story-photo" style="background:linear-gradient(160deg,#6B7A5E,#3F4A36);">
+          <img src="images/stories/pnw-waterfall.jpg" alt="Waterfall along a Pacific Northwest road trip route" loading="lazy">
           <span class="mile">MILE 1,340</span>
         </div>
         <div class="story-body">
@@ -1064,6 +1085,7 @@
 
       <a href="best-car-seats-for-road-trips-2026.html" class="story-card reveal" style="text-decoration:none; color:inherit;">
         <div class="story-photo" style="background:linear-gradient(160deg,#1F3A3D,#132628); align-items:center; justify-content:center;">
+          <img src="images/stories/car-seat-guide.jpg" alt="Child car seat installed in the back seat of a car" loading="lazy" style="opacity:0.55;">
           <svg width="72" height="72" viewBox="0 0 72 72" fill="none" style="position:absolute; opacity:0.9;">
             <path d="M22 50 Q20 30 26 20 Q30 12 40 12 Q50 12 52 22 L54 42" stroke="#E8A33D" stroke-width="3" stroke-linecap="round" fill="none"/>
             <rect x="18" y="48" width="38" height="10" rx="4" fill="#E8A33D" opacity="0.85"/>
@@ -1082,6 +1104,7 @@
 
       <a href="best-roof-cargo-boxes-family-2026.html" class="story-card reveal" style="text-decoration:none; color:inherit;">
         <div class="story-photo" style="background:linear-gradient(160deg,#3F4A36,#1F3A3D); align-items:center; justify-content:center;">
+          <img src="images/stories/roof-cargo-box.jpg" alt="SUV with a roof cargo box packed for a road trip" loading="lazy" style="opacity:0.55;">
           <svg width="76" height="76" viewBox="0 0 76 76" fill="none" style="position:absolute; opacity:0.9;">
             <ellipse cx="38" cy="30" rx="26" ry="10" fill="#E8A33D" opacity="0.85"/>
             <path d="M12 30 Q12 20 38 20 Q64 20 64 30" stroke="#F6EFE4" stroke-width="2" fill="none" opacity="0.5"/>
@@ -1100,6 +1123,7 @@
 
       <a href="best-portable-potty-travel-bathroom-kits-2026.html" class="story-card reveal" style="text-decoration:none; color:inherit;">
         <div class="story-photo" style="background:linear-gradient(160deg,#C1502E,#1F3A3D); align-items:center; justify-content:center;">
+          <img src="images/stories/portable-potty.jpg" alt="Portable travel toilet kit set up outdoors" loading="lazy" style="opacity:0.55;">
           <svg width="64" height="64" viewBox="0 0 64 64" fill="none" style="position:absolute; opacity:0.9;">
             <ellipse cx="32" cy="18" rx="18" ry="8" fill="none" stroke="#E8A33D" stroke-width="3"/>
             <ellipse cx="32" cy="18" rx="9" ry="4" fill="#F6EFE4" opacity="0.7"/>

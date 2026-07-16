@@ -648,24 +648,6 @@
     position:relative;
     display:flex; align-items:flex-end;
     padding:16px;
-    overflow:hidden;
-  }
-  .story-photo img{
-    position:absolute;
-    inset:0;
-    width:100%; height:100%;
-    object-fit:cover;
-    z-index:0;
-  }
-  .story-photo::after{
-    content:'';
-    position:absolute; inset:0;
-    background:linear-gradient(180deg, rgba(19,38,40,0) 40%, rgba(19,38,40,0.55) 100%);
-    z-index:1;
-  }
-  .story-photo .mile, .story-photo svg{
-    position:relative;
-    z-index:2;
   }
   .story-photo .mile{
     font-family:'JetBrains Mono', monospace;
@@ -971,7 +953,7 @@
         <label for="fl-return">Return</label>
         <input id="fl-return" type="date">
       </div>
-      <button class="btn btn-primary" type="button" onclick="alert('Connect a flight affiliate widget here — see the FLIGHT WIDGET comment in the HTML source for setup instructions.')">Search Flights →</button>
+      <button class="btn btn-primary" type="button" id="flightSearchBtn">Search Flights →</button>
     </div>
     <p class="flight-note">// this box is ready to wire up — swap in a Travelpayouts, Skyscanner, or Kayak affiliate widget to make it live</p>
   </div>
@@ -1047,9 +1029,8 @@
     </div>
 
     <div class="story-grid">
-      <a href="the-slow-way-through-the-ozarks.html" class="story-card reveal" style="text-decoration:none; color:inherit;">
+      <div class="story-card reveal">
         <div class="story-photo" style="background:linear-gradient(160deg,#C1502E,#7A3319);">
-          <img src="https://images.unsplash.com/photo-1724350596771-8ebf0f1994ae?auto=format&fit=crop&w=900&q=70" alt="Winding backroad through the Ozark forest" loading="lazy">
           <span class="mile">MILE 214</span>
         </div>
         <div class="story-body">
@@ -1057,11 +1038,10 @@
           <p>Three days off the interstate, following creek roads and a hand-drawn map from a gas station in Mountain View.</p>
           <span class="read">Read the route →</span>
         </div>
-      </a>
+      </div>
 
-      <a href="chasing-sunset-on-highway-1.html" class="story-card reveal" style="text-decoration:none; color:inherit;">
+      <div class="story-card reveal">
         <div class="story-photo" style="background:linear-gradient(160deg,#E8A33D,#B5701F);">
-          <img src="https://images.unsplash.com/photo-1772950399275-81eea958d92b?auto=format&fit=crop&w=900&q=70" alt="Sunset over the coastline along Highway 1, Big Sur" loading="lazy">
           <span class="mile">MILE 892</span>
         </div>
         <div class="story-body">
@@ -1069,11 +1049,10 @@
           <p>What happens when you plan for four stops and end up making eleven — a Big Sur diary.</p>
           <span class="read">Read the route →</span>
         </div>
-      </a>
+      </div>
 
-      <a href="two-weeks-one-van-no-plan.html" class="story-card reveal" style="text-decoration:none; color:inherit;">
+      <div class="story-card reveal">
         <div class="story-photo" style="background:linear-gradient(160deg,#6B7A5E,#3F4A36);">
-          <img src="https://images.unsplash.com/photo-1759585201008-b113bb7c196d?auto=format&fit=crop&w=900&q=70" alt="Waterfall along a Pacific Northwest road trip route" loading="lazy">
           <span class="mile">MILE 1,340</span>
         </div>
         <div class="story-body">
@@ -1081,11 +1060,11 @@
           <p>How a couple mapped the Pacific Northwest with nothing but a full tank and a list of waterfalls.</p>
           <span class="read">Read the route →</span>
         </div>
-      </a>
+      </div>
 
       <a href="best-car-seats-for-road-trips-2026.html" class="story-card reveal" style="text-decoration:none; color:inherit;">
-        <div class="story-photo" style="background:linear-gradient(160deg,#1F3A3D,#132628); align-items:center; justify-content:center;">
-          <img src="https://images.unsplash.com/photo-1530065928592-fb0dc85d2f27?auto=format&fit=crop&w=900&q=70" alt="Child car seat installed in the back seat of a car" loading="lazy">
+        <div class="story-photo" style="background:linear-gradient(160deg,#1F3A3D,#132628);">
+          <span class="mile">GUIDE</span>
         </div>
         <div class="story-body">
           <h3>Best car seats for road trips in 2026</h3>
@@ -1095,23 +1074,12 @@
       </a>
 
       <a href="best-roof-cargo-boxes-family-2026.html" class="story-card reveal" style="text-decoration:none; color:inherit;">
-        <div class="story-photo" style="background:linear-gradient(160deg,#3F4A36,#1F3A3D); align-items:center; justify-content:center;">
-          <img src="https://images.unsplash.com/photo-1670944044793-b447d97c491c?auto=format&fit=crop&w=900&q=70" alt="SUV with a roof cargo box packed for a road trip" loading="lazy">
+        <div class="story-photo" style="background:linear-gradient(160deg,#3F4A36,#1F3A3D);">
+          <span class="mile">GUIDE</span>
         </div>
         <div class="story-body">
           <h3>Best roof & cargo boxes for a family of 5</h3>
           <p>Fitting five people's luggage in one car, without anyone holding a duffel bag for six hours.</p>
-          <span class="read">Read the guide →</span>
-        </div>
-      </a>
-
-      <a href="best-portable-potty-travel-bathroom-kits-2026.html" class="story-card reveal" style="text-decoration:none; color:inherit;">
-        <div class="story-photo" style="background:linear-gradient(160deg,#C1502E,#1F3A3D); align-items:center; justify-content:center;">
-          <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=900&q=70" alt="Portable travel toilet kit set up outdoors" loading="lazy">
-        </div>
-        <div class="story-body">
-          <h3>Best portable potty seats & travel bathroom kits</h3>
-          <p>The gear that gets you through "I have to go potty!" with the nearest exit twenty minutes away.</p>
           <span class="read">Read the guide →</span>
         </div>
       </a>
@@ -1132,58 +1100,29 @@
         <span class="route-days">6 DAYS</span>
         <span class="route-name">Blue Ridge Parkway Loop<span>Asheville → Shenandoah, 469 mi</span></span>
         <span class="route-price">$890<small>per person</small></span>
-        <a href="#" class="route-cta" onclick="alert('Connect a hotel affiliate link here — see the HOTEL AFFILIATE SETUP comment in the HTML source for setup instructions.'); return false;">Reserve Route</a>
+        <a href="#" class="route-cta">Reserve Route</a>
       </div>
       <div class="route-row">
         <span class="route-days">9 DAYS</span>
         <span class="route-name">Pacific Coast Highway<span>San Francisco → San Diego, 630 mi</span></span>
         <span class="route-price">$1,420<small>per person</small></span>
-        <a href="#" class="route-cta" onclick="alert('Connect a hotel affiliate link here — see the HOTEL AFFILIATE SETUP comment in the HTML source for setup instructions.'); return false;">Reserve Route</a>
+        <a href="#" class="route-cta">Reserve Route</a>
       </div>
       <div class="route-row">
         <span class="route-days">7 DAYS</span>
         <span class="route-name">Andalusian Backroads<span>Seville → Granada, 260 mi</span></span>
         <span class="route-price">$980<small>per person</small></span>
-        <a href="#" class="route-cta" onclick="alert('Connect a hotel affiliate link here — see the HOTEL AFFILIATE SETUP comment in the HTML source for setup instructions.'); return false;">Reserve Route</a>
+        <a href="#" class="route-cta">Reserve Route</a>
       </div>
       <div class="route-row">
         <span class="route-days">10 DAYS</span>
         <span class="route-name">Ring Road Iceland<span>Reykjavik → Reykjavik, 830 mi</span></span>
         <span class="route-price">$2,180<small>per person</small></span>
-        <a href="#" class="route-cta" onclick="alert('Connect a hotel affiliate link here — see the HOTEL AFFILIATE SETUP comment in the HTML source for setup instructions.'); return false;">Reserve Route</a>
+        <a href="#" class="route-cta">Reserve Route</a>
       </div>
     </div>
   </div>
 </section>
-
-<!--
-  HOTEL AFFILIATE SETUP — read this when you're ready to go live
-
-  Each "Reserve Route" button is currently a placeholder (it shows an alert
-  instead of booking anything). To make it real and start earning commission:
-
-  1. Sign up free at https://www.travelpayouts.com — this is a single
-     affiliate network that gives you access to Booking.com, Hotellook,
-     Agoda, and other hotel sites through one dashboard. Signup only needs
-     an email + password, and approval is usually near-instant — much
-     easier than applying to Booking.com's own affiliate program directly.
-  2. For EACH route, decide the real overnight stops (e.g. for the
-     6-day Blue Ridge Parkway Loop, pick an actual hotel for each of the
-     5 nights). This is the research step — it has to happen before any
-     link will be honest and bookable.
-  3. In your Travelpayouts dashboard, generate an affiliate link for each
-     specific hotel (or a general search link for the route's region if
-     you don't want to commit to one hotel per stop).
-  4. Replace the onclick alert on that route's "Reserve Route" button with
-     href="YOUR-AFFILIATE-LINK" and remove the onclick attribute — e.g.
-     <a href="https://www.booking.com/hotel/...?aid=YOUR_ID" class="route-cta">Reserve Route</a>
-  5. Every booking made through that link earns you a commission
-     automatically (Booking.com pays ~4% of the booking total; other
-     partners on Travelpayouts vary — check your dashboard for rates).
-
-  Until each route has real linked stops behind it, it's worth keeping
-  these as placeholders rather than promising a booking that isn't there.
--->
 
 <div class="glovebox reveal">
   <h2>Keep something for the road</h2>
@@ -1341,6 +1280,16 @@
     }, 4500);
   }
 
+  // flight search — opens the Travelpayouts/Aviasales affiliate link in a new tab
+  const flightBtn = document.getElementById('flightSearchBtn');
+  if(flightBtn){
+    flightBtn.addEventListener('click', () => {
+      // Base tracked affiliate link (Travelpayouts / Aviasales)
+      const affiliateLink = 'https://aviasales.tpk.lu/GGpDaYIw';
+      window.open(affiliateLink, '_blank', 'noopener');
+    });
+  }
+
   // nav search — toggle panel, jump to matching section on enter
   const searchBtn = document.getElementById('navSearchBtn');
   const searchPanel = document.getElementById('navSearchPanel');
@@ -1395,16 +1344,6 @@
       window.location.href = `mailto:hello@roadmere.com?subject=${subject}&body=${body}`;
     });
   }
-</script>
-
-<!-- Travelpayouts Drive — hotel affiliate monetization script -->
-<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1">
-  (function () {
-      var script = document.createElement("script");
-      script.async = 1;
-      script.src = 'https://tp-em.com/NTUxMDEw.js?t=551010';
-      document.head.appendChild(script);
-  })();
 </script>
 
 </body>

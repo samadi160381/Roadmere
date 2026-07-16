@@ -1132,29 +1132,58 @@
         <span class="route-days">6 DAYS</span>
         <span class="route-name">Blue Ridge Parkway Loop<span>Asheville → Shenandoah, 469 mi</span></span>
         <span class="route-price">$890<small>per person</small></span>
-        <a href="#" class="route-cta">Reserve Route</a>
+        <a href="#" class="route-cta" onclick="alert('Connect a hotel affiliate link here — see the HOTEL AFFILIATE SETUP comment in the HTML source for setup instructions.'); return false;">Reserve Route</a>
       </div>
       <div class="route-row">
         <span class="route-days">9 DAYS</span>
         <span class="route-name">Pacific Coast Highway<span>San Francisco → San Diego, 630 mi</span></span>
         <span class="route-price">$1,420<small>per person</small></span>
-        <a href="#" class="route-cta">Reserve Route</a>
+        <a href="#" class="route-cta" onclick="alert('Connect a hotel affiliate link here — see the HOTEL AFFILIATE SETUP comment in the HTML source for setup instructions.'); return false;">Reserve Route</a>
       </div>
       <div class="route-row">
         <span class="route-days">7 DAYS</span>
         <span class="route-name">Andalusian Backroads<span>Seville → Granada, 260 mi</span></span>
         <span class="route-price">$980<small>per person</small></span>
-        <a href="#" class="route-cta">Reserve Route</a>
+        <a href="#" class="route-cta" onclick="alert('Connect a hotel affiliate link here — see the HOTEL AFFILIATE SETUP comment in the HTML source for setup instructions.'); return false;">Reserve Route</a>
       </div>
       <div class="route-row">
         <span class="route-days">10 DAYS</span>
         <span class="route-name">Ring Road Iceland<span>Reykjavik → Reykjavik, 830 mi</span></span>
         <span class="route-price">$2,180<small>per person</small></span>
-        <a href="#" class="route-cta">Reserve Route</a>
+        <a href="#" class="route-cta" onclick="alert('Connect a hotel affiliate link here — see the HOTEL AFFILIATE SETUP comment in the HTML source for setup instructions.'); return false;">Reserve Route</a>
       </div>
     </div>
   </div>
 </section>
+
+<!--
+  HOTEL AFFILIATE SETUP — read this when you're ready to go live
+
+  Each "Reserve Route" button is currently a placeholder (it shows an alert
+  instead of booking anything). To make it real and start earning commission:
+
+  1. Sign up free at https://www.travelpayouts.com — this is a single
+     affiliate network that gives you access to Booking.com, Hotellook,
+     Agoda, and other hotel sites through one dashboard. Signup only needs
+     an email + password, and approval is usually near-instant — much
+     easier than applying to Booking.com's own affiliate program directly.
+  2. For EACH route, decide the real overnight stops (e.g. for the
+     6-day Blue Ridge Parkway Loop, pick an actual hotel for each of the
+     5 nights). This is the research step — it has to happen before any
+     link will be honest and bookable.
+  3. In your Travelpayouts dashboard, generate an affiliate link for each
+     specific hotel (or a general search link for the route's region if
+     you don't want to commit to one hotel per stop).
+  4. Replace the onclick alert on that route's "Reserve Route" button with
+     href="YOUR-AFFILIATE-LINK" and remove the onclick attribute — e.g.
+     <a href="https://www.booking.com/hotel/...?aid=YOUR_ID" class="route-cta">Reserve Route</a>
+  5. Every booking made through that link earns you a commission
+     automatically (Booking.com pays ~4% of the booking total; other
+     partners on Travelpayouts vary — check your dashboard for rates).
+
+  Until each route has real linked stops behind it, it's worth keeping
+  these as placeholders rather than promising a booking that isn't there.
+-->
 
 <div class="glovebox reveal">
   <h2>Keep something for the road</h2>

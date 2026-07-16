@@ -877,7 +877,11 @@
   }
   .footer-inner{
     max-width:1180px; margin:0 auto;
-    display:flex; justify-content:space-between; flex-wrap:wrap; gap:14px;
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;
+  }
+  .footer-bottom{
+    max-width:1180px; margin:14px auto 0;
+    display:flex; justify-content:flex-end;
   }
   .footer-inner .logo{
     color:var(--paper);
@@ -1268,7 +1272,9 @@
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </nav>
-    <span>© 2026 Roadmere. Every road leads somewhere.</span>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 RoadMere. Every road leads somewhere.</span>
   </div>
 </footer>
 

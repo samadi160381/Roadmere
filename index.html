@@ -1185,25 +1185,25 @@
         <span class="route-days">6 DAYS</span>
         <span class="route-name">Blue Ridge Parkway Loop<span>Asheville → Shenandoah, 469 mi</span></span>
         <span class="route-price">$890<small>per person</small></span>
-        <a href="#" class="route-cta" onclick="alert('Connect a hotel affiliate link here — see the HOTEL AFFILIATE SETUP comment in the HTML source for setup instructions.'); return false;">Reserve Route</a>
+        <a href="#" class="route-cta" data-city="Asheville, NC">Reserve Route</a>
       </div>
       <div class="route-row">
         <span class="route-days">9 DAYS</span>
         <span class="route-name">Pacific Coast Highway<span>San Francisco → San Diego, 630 mi</span></span>
         <span class="route-price">$1,420<small>per person</small></span>
-        <a href="#" class="route-cta" onclick="alert('Connect a hotel affiliate link here — see the HOTEL AFFILIATE SETUP comment in the HTML source for setup instructions.'); return false;">Reserve Route</a>
+        <a href="#" class="route-cta" data-city="San Diego, CA">Reserve Route</a>
       </div>
       <div class="route-row">
         <span class="route-days">7 DAYS</span>
         <span class="route-name">Andalusian Backroads<span>Seville → Granada, 260 mi</span></span>
         <span class="route-price">$980<small>per person</small></span>
-        <a href="#" class="route-cta" onclick="alert('Connect a hotel affiliate link here — see the HOTEL AFFILIATE SETUP comment in the HTML source for setup instructions.'); return false;">Reserve Route</a>
+        <a href="#" class="route-cta" data-city="Granada, Spain">Reserve Route</a>
       </div>
       <div class="route-row">
         <span class="route-days">10 DAYS</span>
         <span class="route-name">Ring Road Iceland<span>Reykjavik → Reykjavik, 830 mi</span></span>
         <span class="route-price">$2,180<small>per person</small></span>
-        <a href="#" class="route-cta" onclick="alert('Connect a hotel affiliate link here — see the HOTEL AFFILIATE SETUP comment in the HTML source for setup instructions.'); return false;">Reserve Route</a>
+        <a href="#" class="route-cta" data-city="Reykjavik, Iceland">Reserve Route</a>
       </div>
     </div>
   </div>
@@ -1636,6 +1636,23 @@
 
   setupAirportAutocomplete('fl-from', 'fl-from-dropdown');
   setupAirportAutocomplete('fl-to', 'fl-to-dropdown');
+
+  // Reserve Route buttons — auto-generates a Booking.com search link from each
+  // route's data-city attribute. To add a new route later: just add
+  // data-city="City, Region" to its "Reserve Route" <a> tag — no JS changes needed.
+  //
+  // Replace YOUR_TRAVELPAYOUTS_AID below with your real Booking.com affiliate ID
+  // from your Travelpayouts dashboard (Booking.com is listed there as a partner —
+  // see the HOTEL AFFILIATE SETUP notes further up in this file).
+  const BOOKING_AFFILIATE_ID = 'YOUR_TRAVELPAYOUTS_AID';
+
+  document.querySelectorAll('.route-cta[data-city]').forEach(link => {
+    const city = link.getAttribute('data-city');
+    const searchUrl = `https://www.booking.com/searchresults.html?ss=${encodeURIComponent(city)}&aid=${BOOKING_AFFILIATE_ID}`;
+    link.href = searchUrl;
+    link.target = '_blank';
+    link.rel = 'noopener';
+  });
 </script>
 
 <!-- Travelpayouts Drive — hotel affiliate monetization script -->

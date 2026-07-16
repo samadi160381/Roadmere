@@ -426,6 +426,53 @@
   .flight-field{
     min-width:0;
   }
+  .airport-autocomplete{
+    position:relative;
+  }
+  .airport-dropdown{
+    display:none;
+    position:absolute;
+    top:calc(100% + 6px);
+    left:0;
+    right:0;
+    background:var(--dusk-navy);
+    border:1px solid rgba(246,239,228,0.15);
+    border-radius:10px;
+    max-height:280px;
+    overflow-y:auto;
+    z-index:60;
+    box-shadow:0 20px 40px -12px rgba(0,0,0,0.5);
+  }
+  .airport-dropdown.show{display:block;}
+  .airport-option{
+    padding:10px 14px;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    border-bottom:1px solid rgba(246,239,228,0.06);
+  }
+  .airport-option:last-child{border-bottom:none;}
+  .airport-option:hover, .airport-option.active{
+    background:rgba(232,163,61,0.14);
+  }
+  .airport-option .ao-main{
+    font-size:0.9rem;
+    color:var(--paper);
+  }
+  .airport-option .ao-main b{color:var(--amber);}
+  .airport-option .ao-code{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.78rem;
+    color:rgba(246,239,228,0.5);
+    flex-shrink:0;
+  }
+  .airport-dropdown .ao-empty{
+    padding:12px 14px;
+    font-size:0.85rem;
+    color:rgba(246,239,228,0.45);
+  }
   .flight-field label{
     display:block;
     font-size:0.72rem;
@@ -957,11 +1004,17 @@
     <div class="flight-grid">
       <div class="flight-field">
         <label for="fl-from">From</label>
-        <input id="fl-from" type="text" placeholder="London (LHR)" list="cityList" autocomplete="off">
+        <div class="airport-autocomplete">
+          <input id="fl-from" type="text" placeholder="London (LHR)" autocomplete="off">
+          <div class="airport-dropdown" id="fl-from-dropdown"></div>
+        </div>
       </div>
       <div class="flight-field">
         <label for="fl-to">To</label>
-        <input id="fl-to" type="text" placeholder="Tokyo (HND)" list="cityList" autocomplete="off">
+        <div class="airport-autocomplete">
+          <input id="fl-to" type="text" placeholder="Tokyo (HND)" autocomplete="off">
+          <div class="airport-dropdown" id="fl-to-dropdown"></div>
+        </div>
       </div>
       <div class="flight-field">
         <label for="fl-depart">Depart</label>
@@ -1047,7 +1100,7 @@
     </div>
 
     <div class="story-grid">
-      <div class="story-card reveal">
+      <a href="the-slow-way-through-the-ozarks.html" class="story-card reveal" style="text-decoration:none; color:inherit;">
         <div class="story-photo" style="background:linear-gradient(160deg,#C1502E,#7A3319);">
           <img src="https://images.unsplash.com/photo-1724350596771-8ebf0f1994ae?auto=format&fit=crop&w=900&q=70" alt="Winding backroad through the Ozark forest" loading="lazy">
           <span class="mile">MILE 214</span>
@@ -1057,9 +1110,9 @@
           <p>Three days off the interstate, following creek roads and a hand-drawn map from a gas station in Mountain View.</p>
           <span class="read">Read the route →</span>
         </div>
-      </div>
+      </a>
 
-      <div class="story-card reveal">
+      <a href="chasing-sunset-on-highway-1.html" class="story-card reveal" style="text-decoration:none; color:inherit;">
         <div class="story-photo" style="background:linear-gradient(160deg,#E8A33D,#B5701F);">
           <img src="https://images.unsplash.com/photo-1772950399275-81eea958d92b?auto=format&fit=crop&w=900&q=70" alt="Sunset over the coastline along Highway 1, Big Sur" loading="lazy">
           <span class="mile">MILE 892</span>
@@ -1069,9 +1122,9 @@
           <p>What happens when you plan for four stops and end up making eleven — a Big Sur diary.</p>
           <span class="read">Read the route →</span>
         </div>
-      </div>
+      </a>
 
-      <div class="story-card reveal">
+      <a href="two-weeks-one-van-no-plan.html" class="story-card reveal" style="text-decoration:none; color:inherit;">
         <div class="story-photo" style="background:linear-gradient(160deg,#6B7A5E,#3F4A36);">
           <img src="https://images.unsplash.com/photo-1759585201008-b113bb7c196d?auto=format&fit=crop&w=900&q=70" alt="Waterfall along a Pacific Northwest road trip route" loading="lazy">
           <span class="mile">MILE 1,340</span>
@@ -1081,7 +1134,7 @@
           <p>How a couple mapped the Pacific Northwest with nothing but a full tank and a list of waterfalls.</p>
           <span class="read">Read the route →</span>
         </div>
-      </div>
+      </a>
 
       <a href="best-car-seats-for-road-trips-2026.html" class="story-card reveal" style="text-decoration:none; color:inherit;">
         <div class="story-photo" style="background:linear-gradient(160deg,#1F3A3D,#132628); align-items:center; justify-content:center;">
@@ -1132,29 +1185,58 @@
         <span class="route-days">6 DAYS</span>
         <span class="route-name">Blue Ridge Parkway Loop<span>Asheville → Shenandoah, 469 mi</span></span>
         <span class="route-price">$890<small>per person</small></span>
-        <a href="#" class="route-cta">Reserve Route</a>
+        <a href="#" class="route-cta" onclick="alert('Connect a hotel affiliate link here — see the HOTEL AFFILIATE SETUP comment in the HTML source for setup instructions.'); return false;">Reserve Route</a>
       </div>
       <div class="route-row">
         <span class="route-days">9 DAYS</span>
         <span class="route-name">Pacific Coast Highway<span>San Francisco → San Diego, 630 mi</span></span>
         <span class="route-price">$1,420<small>per person</small></span>
-        <a href="#" class="route-cta">Reserve Route</a>
+        <a href="#" class="route-cta" onclick="alert('Connect a hotel affiliate link here — see the HOTEL AFFILIATE SETUP comment in the HTML source for setup instructions.'); return false;">Reserve Route</a>
       </div>
       <div class="route-row">
         <span class="route-days">7 DAYS</span>
         <span class="route-name">Andalusian Backroads<span>Seville → Granada, 260 mi</span></span>
         <span class="route-price">$980<small>per person</small></span>
-        <a href="#" class="route-cta">Reserve Route</a>
+        <a href="#" class="route-cta" onclick="alert('Connect a hotel affiliate link here — see the HOTEL AFFILIATE SETUP comment in the HTML source for setup instructions.'); return false;">Reserve Route</a>
       </div>
       <div class="route-row">
         <span class="route-days">10 DAYS</span>
         <span class="route-name">Ring Road Iceland<span>Reykjavik → Reykjavik, 830 mi</span></span>
         <span class="route-price">$2,180<small>per person</small></span>
-        <a href="#" class="route-cta">Reserve Route</a>
+        <a href="#" class="route-cta" onclick="alert('Connect a hotel affiliate link here — see the HOTEL AFFILIATE SETUP comment in the HTML source for setup instructions.'); return false;">Reserve Route</a>
       </div>
     </div>
   </div>
 </section>
+
+<!--
+  HOTEL AFFILIATE SETUP — read this when you're ready to go live
+
+  Each "Reserve Route" button is currently a placeholder (it shows an alert
+  instead of booking anything). To make it real and start earning commission:
+
+  1. Sign up free at https://www.travelpayouts.com — this is a single
+     affiliate network that gives you access to Booking.com, Hotellook,
+     Agoda, and other hotel sites through one dashboard. Signup only needs
+     an email + password, and approval is usually near-instant — much
+     easier than applying to Booking.com's own affiliate program directly.
+  2. For EACH route, decide the real overnight stops (e.g. for the
+     6-day Blue Ridge Parkway Loop, pick an actual hotel for each of the
+     5 nights). This is the research step — it has to happen before any
+     link will be honest and bookable.
+  3. In your Travelpayouts dashboard, generate an affiliate link for each
+     specific hotel (or a general search link for the route's region if
+     you don't want to commit to one hotel per stop).
+  4. Replace the onclick alert on that route's "Reserve Route" button with
+     href="YOUR-AFFILIATE-LINK" and remove the onclick attribute — e.g.
+     <a href="https://www.booking.com/hotel/...?aid=YOUR_ID" class="route-cta">Reserve Route</a>
+  5. Every booking made through that link earns you a commission
+     automatically (Booking.com pays ~4% of the booking total; other
+     partners on Travelpayouts vary — check your dashboard for rates).
+
+  Until each route has real linked stops behind it, it's worth keeping
+  these as placeholders rather than promising a booking that isn't there.
+-->
 
 <div class="glovebox reveal">
   <h2>Keep something for the road</h2>
@@ -1312,16 +1394,6 @@
     }, 4500);
   }
 
-  // flight search — opens the Travelpayouts/Aviasales affiliate link in a new tab
-  const flightBtn = document.getElementById('flightSearchBtn');
-  if(flightBtn){
-    flightBtn.addEventListener('click', () => {
-      // Base tracked affiliate link (Travelpayouts / Aviasales)
-      const affiliateLink = 'https://aviasales.tpk.lu/GGpDaYIw';
-      window.open(affiliateLink, '_blank', 'noopener');
-    });
-  }
-
   // nav search — toggle panel, jump to matching section on enter
   const searchBtn = document.getElementById('navSearchBtn');
   const searchPanel = document.getElementById('navSearchPanel');
@@ -1376,6 +1448,204 @@
       window.location.href = `mailto:hello@roadmere.com?subject=${subject}&body=${body}`;
     });
   }
+
+  // flight search — opens the Travelpayouts/Aviasales affiliate link in a new tab
+  const flightBtn = document.getElementById('flightSearchBtn');
+  if(flightBtn){
+    flightBtn.addEventListener('click', () => {
+      // Base tracked affiliate link (Travelpayouts / Aviasales)
+      const affiliateLink = 'https://aviasales.tpk.lu/GGpDaYIw';
+      window.open(affiliateLink, '_blank', 'noopener');
+    });
+  }
+
+  // Airport autocomplete — live dropdown suggestions as you type
+  const AIRPORTS = [
+    {code:'ATL', city:'Atlanta', country:'USA', name:'Hartsfield-Jackson'},
+    {code:'JFK', city:'New York', country:'USA', name:'John F. Kennedy'},
+    {code:'LGA', city:'New York', country:'USA', name:'LaGuardia'},
+    {code:'EWR', city:'Newark', country:'USA', name:'Newark Liberty'},
+    {code:'LAX', city:'Los Angeles', country:'USA', name:'Los Angeles Intl'},
+    {code:'ORD', city:'Chicago', country:'USA', name:'O\'Hare'},
+    {code:'MDW', city:'Chicago', country:'USA', name:'Midway'},
+    {code:'DFW', city:'Dallas', country:'USA', name:'Dallas/Fort Worth'},
+    {code:'DEN', city:'Denver', country:'USA', name:'Denver Intl'},
+    {code:'SFO', city:'San Francisco', country:'USA', name:'San Francisco Intl'},
+    {code:'SEA', city:'Seattle', country:'USA', name:'Seattle-Tacoma'},
+    {code:'MIA', city:'Miami', country:'USA', name:'Miami Intl'},
+    {code:'BOS', city:'Boston', country:'USA', name:'Logan'},
+    {code:'PHX', city:'Phoenix', country:'USA', name:'Sky Harbor'},
+    {code:'IAH', city:'Houston', country:'USA', name:'George Bush'},
+    {code:'LAS', city:'Las Vegas', country:'USA', name:'Harry Reid'},
+    {code:'MCO', city:'Orlando', country:'USA', name:'Orlando Intl'},
+    {code:'AUS', city:'Austin', country:'USA', name:'Austin-Bergstrom'},
+    {code:'PDX', city:'Portland', country:'USA', name:'Portland Intl'},
+    {code:'SAN', city:'San Diego', country:'USA', name:'San Diego Intl'},
+    {code:'SLC', city:'Salt Lake City', country:'USA', name:'Salt Lake City Intl'},
+    {code:'MSP', city:'Minneapolis', country:'USA', name:'Minneapolis-St Paul'},
+    {code:'DTW', city:'Detroit', country:'USA', name:'Detroit Metro'},
+    {code:'PHL', city:'Philadelphia', country:'USA', name:'Philadelphia Intl'},
+    {code:'DCA', city:'Washington', country:'USA', name:'Reagan National'},
+    {code:'IAD', city:'Washington', country:'USA', name:'Dulles'},
+    {code:'YYZ', city:'Toronto', country:'Canada', name:'Pearson'},
+    {code:'YVR', city:'Vancouver', country:'Canada', name:'Vancouver Intl'},
+    {code:'YUL', city:'Montreal', country:'Canada', name:'Trudeau'},
+    {code:'YYC', city:'Calgary', country:'Canada', name:'Calgary Intl'},
+    {code:'MEX', city:'Mexico City', country:'Mexico', name:'Benito Juarez'},
+    {code:'CUN', city:'Cancun', country:'Mexico', name:'Cancun Intl'},
+    {code:'GRU', city:'Sao Paulo', country:'Brazil', name:'Guarulhos'},
+    {code:'GIG', city:'Rio de Janeiro', country:'Brazil', name:'Galeao'},
+    {code:'EZE', city:'Buenos Aires', country:'Argentina', name:'Ezeiza'},
+    {code:'SCL', city:'Santiago', country:'Chile', name:'Arturo Merino Benitez'},
+    {code:'BOG', city:'Bogota', country:'Colombia', name:'El Dorado'},
+    {code:'LIM', city:'Lima', country:'Peru', name:'Jorge Chavez'},
+    {code:'LHR', city:'London', country:'UK', name:'Heathrow'},
+    {code:'LGW', city:'London', country:'UK', name:'Gatwick'},
+    {code:'STN', city:'London', country:'UK', name:'Stansted'},
+    {code:'LCY', city:'London', country:'UK', name:'City Airport'},
+    {code:'MAN', city:'Manchester', country:'UK', name:'Manchester Airport'},
+    {code:'EDI', city:'Edinburgh', country:'UK', name:'Edinburgh Airport'},
+    {code:'DUB', city:'Dublin', country:'Ireland', name:'Dublin Airport'},
+    {code:'CDG', city:'Paris', country:'France', name:'Charles de Gaulle'},
+    {code:'ORY', city:'Paris', country:'France', name:'Orly'},
+    {code:'NCE', city:'Nice', country:'France', name:'Cote d\'Azur'},
+    {code:'AMS', city:'Amsterdam', country:'Netherlands', name:'Schiphol'},
+    {code:'BRU', city:'Brussels', country:'Belgium', name:'Brussels Airport'},
+    {code:'FRA', city:'Frankfurt', country:'Germany', name:'Frankfurt Airport'},
+    {code:'MUC', city:'Munich', country:'Germany', name:'Munich Airport'},
+    {code:'BER', city:'Berlin', country:'Germany', name:'Brandenburg'},
+    {code:'ZRH', city:'Zurich', country:'Switzerland', name:'Zurich Airport'},
+    {code:'GVA', city:'Geneva', country:'Switzerland', name:'Geneva Airport'},
+    {code:'VIE', city:'Vienna', country:'Austria', name:'Vienna Intl'},
+    {code:'MAD', city:'Madrid', country:'Spain', name:'Barajas'},
+    {code:'BCN', city:'Barcelona', country:'Spain', name:'El Prat'},
+    {code:'LIS', city:'Lisbon', country:'Portugal', name:'Humberto Delgado'},
+    {code:'OPO', city:'Porto', country:'Portugal', name:'Francisco Sa Carneiro'},
+    {code:'FCO', city:'Rome', country:'Italy', name:'Fiumicino'},
+    {code:'MXP', city:'Milan', country:'Italy', name:'Malpensa'},
+    {code:'VCE', city:'Venice', country:'Italy', name:'Marco Polo'},
+    {code:'ATH', city:'Athens', country:'Greece', name:'Eleftherios Venizelos'},
+    {code:'IST', city:'Istanbul', country:'Turkey', name:'Istanbul Airport'},
+    {code:'CPH', city:'Copenhagen', country:'Denmark', name:'Kastrup'},
+    {code:'OSL', city:'Oslo', country:'Norway', name:'Gardermoen'},
+    {code:'ARN', city:'Stockholm', country:'Sweden', name:'Arlanda'},
+    {code:'HEL', city:'Helsinki', country:'Finland', name:'Helsinki Airport'},
+    {code:'KEF', city:'Reykjavik', country:'Iceland', name:'Keflavik'},
+    {code:'WAW', city:'Warsaw', country:'Poland', name:'Chopin Airport'},
+    {code:'PRG', city:'Prague', country:'Czechia', name:'Vaclav Havel'},
+    {code:'BUD', city:'Budapest', country:'Hungary', name:'Ferenc Liszt'},
+    {code:'DBV', city:'Dubrovnik', country:'Croatia', name:'Dubrovnik Airport'},
+    {code:'SVO', city:'Moscow', country:'Russia', name:'Sheremetyevo'},
+    {code:'DXB', city:'Dubai', country:'UAE', name:'Dubai Intl'},
+    {code:'AUH', city:'Abu Dhabi', country:'UAE', name:'Zayed Intl'},
+    {code:'DOH', city:'Doha', country:'Qatar', name:'Hamad Intl'},
+    {code:'TLV', city:'Tel Aviv', country:'Israel', name:'Ben Gurion'},
+    {code:'CAI', city:'Cairo', country:'Egypt', name:'Cairo Intl'},
+    {code:'CMN', city:'Casablanca', country:'Morocco', name:'Mohammed V'},
+    {code:'RAK', city:'Marrakech', country:'Morocco', name:'Menara Airport'},
+    {code:'JNB', city:'Johannesburg', country:'South Africa', name:'OR Tambo'},
+    {code:'CPT', city:'Cape Town', country:'South Africa', name:'Cape Town Intl'},
+    {code:'NBO', city:'Nairobi', country:'Kenya', name:'Jomo Kenyatta'},
+    {code:'LOS', city:'Lagos', country:'Nigeria', name:'Murtala Muhammed'},
+    {code:'ADD', city:'Addis Ababa', country:'Ethiopia', name:'Bole Intl'},
+    {code:'DEL', city:'Delhi', country:'India', name:'Indira Gandhi'},
+    {code:'BOM', city:'Mumbai', country:'India', name:'Chhatrapati Shivaji'},
+    {code:'BLR', city:'Bangalore', country:'India', name:'Kempegowda'},
+    {code:'HND', city:'Tokyo', country:'Japan', name:'Haneda'},
+    {code:'NRT', city:'Tokyo', country:'Japan', name:'Narita'},
+    {code:'KIX', city:'Osaka', country:'Japan', name:'Kansai Intl'},
+    {code:'ICN', city:'Seoul', country:'South Korea', name:'Incheon'},
+    {code:'PEK', city:'Beijing', country:'China', name:'Capital Intl'},
+    {code:'PVG', city:'Shanghai', country:'China', name:'Pudong'},
+    {code:'HKG', city:'Hong Kong', country:'Hong Kong', name:'Hong Kong Intl'},
+    {code:'TPE', city:'Taipei', country:'Taiwan', name:'Taoyuan'},
+    {code:'SIN', city:'Singapore', country:'Singapore', name:'Changi'},
+    {code:'KUL', city:'Kuala Lumpur', country:'Malaysia', name:'KLIA'},
+    {code:'BKK', city:'Bangkok', country:'Thailand', name:'Suvarnabhumi'},
+    {code:'DPS', city:'Bali', country:'Indonesia', name:'Ngurah Rai'},
+    {code:'CGK', city:'Jakarta', country:'Indonesia', name:'Soekarno-Hatta'},
+    {code:'MNL', city:'Manila', country:'Philippines', name:'Ninoy Aquino'},
+    {code:'SGN', city:'Ho Chi Minh City', country:'Vietnam', name:'Tan Son Nhat'},
+    {code:'HAN', city:'Hanoi', country:'Vietnam', name:'Noi Bai'},
+    {code:'SYD', city:'Sydney', country:'Australia', name:'Kingsford Smith'},
+    {code:'MEL', city:'Melbourne', country:'Australia', name:'Melbourne Airport'},
+    {code:'BNE', city:'Brisbane', country:'Australia', name:'Brisbane Airport'},
+    {code:'PER', city:'Perth', country:'Australia', name:'Perth Airport'},
+    {code:'AKL', city:'Auckland', country:'New Zealand', name:'Auckland Airport'},
+    {code:'ZQN', city:'Queenstown', country:'New Zealand', name:'Queenstown Airport'}
+  ];
+
+  function airportMatches(a, q){
+    const hay = `${a.city} ${a.name} ${a.code} ${a.country}`.toLowerCase();
+    return hay.includes(q);
+  }
+  function rankAirport(a, q){
+    const city = a.city.toLowerCase(), code = a.code.toLowerCase();
+    if(code === q) return 0;
+    if(city.startsWith(q)) return 1;
+    if(code.startsWith(q)) return 2;
+    if(a.name.toLowerCase().startsWith(q)) return 3;
+    return 4;
+  }
+
+  function setupAirportAutocomplete(inputId, dropdownId){
+    const input = document.getElementById(inputId);
+    const dropdown = document.getElementById(dropdownId);
+    if(!input || !dropdown) return;
+
+    function render(query){
+      const q = query.trim().toLowerCase();
+      if(q.length < 1){ dropdown.classList.remove('show'); dropdown.innerHTML=''; return; }
+      const matches = AIRPORTS
+        .filter(a => airportMatches(a, q))
+        .sort((a,b) => rankAirport(a,q) - rankAirport(b,q))
+        .slice(0, 8);
+
+      if(!matches.length){
+        dropdown.innerHTML = '<div class="ao-empty">No airports found</div>';
+        dropdown.classList.add('show');
+        return;
+      }
+
+      dropdown.innerHTML = matches.map(a => {
+        return `<div class="airport-option" data-value="${a.city} (${a.code})">
+          <span class="ao-main">${a.city}, ${a.country} <span style="color:rgba(246,239,228,0.5);">— ${a.name}</span></span>
+          <span class="ao-code">${a.code}</span>
+        </div>`;
+      }).join('');
+      dropdown.classList.add('show');
+    }
+
+    input.addEventListener('input', () => render(input.value));
+    input.addEventListener('focus', () => { if(input.value.trim()) render(input.value); });
+
+    dropdown.addEventListener('click', (e) => {
+      const opt = e.target.closest('.airport-option');
+      if(!opt || !opt.dataset.value) return;
+      input.value = opt.dataset.value;
+      dropdown.classList.remove('show');
+      dropdown.innerHTML = '';
+    });
+
+    document.addEventListener('click', (e) => {
+      if(!input.contains(e.target) && !dropdown.contains(e.target)){
+        dropdown.classList.remove('show');
+      }
+    });
+  }
+
+  setupAirportAutocomplete('fl-from', 'fl-from-dropdown');
+  setupAirportAutocomplete('fl-to', 'fl-to-dropdown');
+</script>
+
+<!-- Travelpayouts Drive — hotel affiliate monetization script -->
+<script nowprocket data-noptimize="1" data-cfasync="false" data-wpfc-render="false" seraph-accel-crit="1" data-no-defer="1">
+  (function () {
+      var script = document.createElement("script");
+      script.async = 1;
+      script.src = 'https://tp-em.com/NTUxMDEw.js?t=551010';
+      document.head.appendChild(script);
+  })();
 </script>
 
 </body>

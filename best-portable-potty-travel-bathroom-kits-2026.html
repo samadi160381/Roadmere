@@ -51,12 +51,15 @@ nav{display:flex; align-items:center; justify-content:space-between; padding:18p
 .nav-links a:hover{color:var(--clay);}
 @media (max-width:700px){ .nav-links{display:none;} }
 
-.article-hero{background:linear-gradient(180deg, var(--dusk-navy) 0%, var(--dusk-deep) 100%); color:var(--paper); padding:64px 24px 56px;}
+.article-hero{padding:32px 24px 24px;}
 .hero-inner{max-width:820px; margin:0 auto;}
-.eyebrow{font-family:'JetBrains Mono', monospace; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--amber); display:inline-flex; align-items:center; gap:10px; margin-bottom:18px;}
-.article-hero h1{font-size:clamp(2rem, 5vw, 3rem); line-height:1.12; margin-bottom:18px;}
-.hero-dek{font-size:1.1rem; color:rgba(246,239,228,0.78); max-width:640px;}
-.hero-meta{margin-top:24px; font-family:'JetBrains Mono', monospace; font-size:0.8rem; color:rgba(246,239,228,0.55); display:flex; gap:18px; flex-wrap:wrap;}
+.eyebrow{font-family:'JetBrains Mono', monospace; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--clay); display:inline-flex; align-items:center; gap:10px; margin-bottom:18px;}
+.article-hero h1{font-size:clamp(2rem, 5vw, 3rem); line-height:1.12; margin-bottom:18px; color:var(--dusk-deep);}
+.hero-dek{font-size:1.1rem; color:rgba(43,36,32,0.75); max-width:640px;}
+.hero-meta{margin-top:24px; font-family:'JetBrains Mono', monospace; font-size:0.8rem; color:rgba(43,36,32,0.5); display:flex; gap:18px; flex-wrap:wrap;}
+
+.back-home{display:inline-flex; align-items:center; gap:6px; font-family:'JetBrains Mono', monospace; font-size:0.8rem; color:var(--dusk-deep); text-decoration:none; max-width:820px; margin:20px auto 0; padding:0 24px;}
+.back-home:hover{color:var(--clay);}
 
 .disclosure{background:var(--sand); font-size:0.85rem; color:rgba(43,36,32,0.75); text-align:center; padding:12px 24px;}
 
@@ -164,6 +167,8 @@ footer{
 </div>
 </nav>
 </header>
+
+<a href="index.html" class="back-home">← Back to Home</a>
 
 <section class="article-hero">
 <div class="hero-inner">

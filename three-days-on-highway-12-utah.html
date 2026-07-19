@@ -3,45 +3,112 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Three Days on Highway 12, Utah | Roadmere</title>
+<title>Three Days on Highway 12, Utah — Roadmere</title>
 <meta name="description" content="A traveler's account of three days driving Utah's Highway 12, through red rock canyons and quiet mountain passes.">
+<link rel="canonical" href="https://roadmere.com/three-days-on-highway-12-utah.html">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Ccircle cx='100' cy='100' r='96' fill='%231F3A3D'/%3E%3Cpath d='M20 100 A80 80 0 0 1 180 100 L180 130 L20 130 Z' fill='%232C4A45'/%3E%3Ccircle cx='100' cy='95' r='22' fill='%23E8A33D' opacity='0.9'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#1F3A3D">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,600&family=Nunito:wght@400;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,900&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,900&family=Tangerine:wght@400;700&family=Work+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Nunito', sans-serif; color: #1F3A3D; background: #F5EAD6; line-height: 1.75; }
-  a { text-decoration: none; }
+  :root{
+    --dusk-deep:#1F3A3D; --dusk-navy:#132628; --clay:#C1502E; --amber:#E8A33D;
+    --paper:#F6EFE4; --ink:#2B2420; --sand:#EAD9BE; --sage:#6B7A5E; --line: rgba(43,36,32,0.12);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--paper); color:var(--ink); font-family:'Work Sans', sans-serif; line-height:1.65;}
+  h1,h2,h3{font-family:'Fraunces', serif; font-weight:700; letter-spacing:-0.01em; color:var(--dusk-deep);}
+  .mono{font-family:'JetBrains Mono', monospace;}
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:760px; margin:0 auto; padding:0 28px;}
 
-  header{position:sticky; top:0; z-index:50; background:rgba(245,234,214,0.92); backdrop-filter:blur(8px); border-bottom:1px solid rgba(31,58,61,0.12);}
-  header nav{display:flex; align-items:center; justify-content:space-between; padding:18px 24px; max-width:1180px; margin:0 auto; background:transparent;}
-  .logo{font-family:'Fraunces', serif; font-weight:700; font-size:1.5rem; line-height:1; color:#1F3A3D; display:flex; align-items:center; gap:8px; text-decoration:none;}
-  .logo .gold{font-style:italic; color:#C1502E; font-weight:600;}
+  header{position:sticky; top:0; z-index:50; background:rgba(246,239,228,0.92); backdrop-filter:blur(8px); border-bottom:1px solid var(--line);}
+  nav{display:flex; align-items:center; justify-content:space-between; padding:18px 24px; max-width:1180px; margin:0 auto;}
+  .logo{font-family:'Fraunces', serif; font-weight:700; font-size:1.5rem; line-height:1; color:var(--dusk-deep);}
+  .logo .gold{color:var(--clay);}
   .logo-icon{width:32px; height:32px; flex-shrink:0;}
   .logo-icon img{display:block; width:100%; height:100%; object-fit:contain;}
-  .nav-links{display:flex; gap:28px; font-family:'Work Sans', sans-serif; font-size:0.9rem; font-weight:500;}
-  .nav-links a{color:#1F3A3D;}
-  .nav-links a:hover{color:#C1502E;}
+  .nav-links{display:flex; gap:28px; font-size:0.9rem; font-weight:500;}
+  .nav-links a:hover{color:var(--clay);}
   .nav-search-btn{
     display:flex; align-items:center; justify-content:center;
     width:38px; height:38px;
     border-radius:50%;
-    border:1px solid rgba(31,58,61,0.12);
+    border:1px solid var(--line);
     background:transparent;
-    color:#1F3A3D;
+    color:var(--dusk-deep);
     margin-left:20px;
     flex-shrink:0;
     transition:background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
   }
-  .nav-search-btn:hover{background:#1F3A3D; border-color:#1F3A3D; color:#F5EAD6;}
+  .nav-search-btn:hover{background:var(--dusk-deep); border-color:var(--dusk-deep); color:var(--paper);}
   @media (max-width:700px){ .nav-links{display:none;} }
 
-  .back-home{display:inline-flex; align-items:center; gap:6px; font-family:'JetBrains Mono', monospace; font-size:0.8rem; color:#1F3A3D; text-decoration:none; max-width:760px; margin:20px auto 0; padding:0 24px;}
-  .back-home:hover{color:#C1502E;}
+  .back-home{display:inline-flex; align-items:center; gap:6px; font-family:'JetBrains Mono', monospace; font-size:0.8rem; color:var(--dusk-deep); text-decoration:none; max-width:760px; margin:20px auto 0; padding:0 28px;}
+  .back-home:hover{color:var(--clay);}
+
+  .disclosure{background:var(--sand); font-size:0.85rem; color:rgba(43,36,32,0.75); text-align:center; padding:12px 24px;}
+
+  .article-hero{position:relative; height:56vh; min-height:380px; overflow:hidden;}
+  .article-hero img{width:100%; height:100%; object-fit:cover; display:block;}
+  .article-hero::after{content:''; position:absolute; inset:0; background:linear-gradient(180deg, rgba(19,38,40,0.15) 0%, rgba(19,38,40,0.75) 100%);}
+  .article-hero-caption{position:absolute; left:0; right:0; bottom:0; padding:40px 28px; max-width:820px; margin:0 auto; color:var(--paper); z-index:2;}
+  .mile-badge{display:inline-block; font-family:'JetBrains Mono', monospace; font-size:0.78rem; letter-spacing:0.08em; background:rgba(19,38,40,0.75); color:var(--amber); padding:6px 14px; border-radius:100px; margin-bottom:16px;}
+  .article-hero h1{color:var(--paper); font-size:clamp(2rem,4.6vw,3.1rem); line-height:1.08; text-shadow:0 4px 20px rgba(0,0,0,0.35);}
+
+  .byline{display:flex; gap:18px; flex-wrap:wrap; padding:26px 0; border-bottom:1px solid var(--line); margin-bottom:34px; font-family:'JetBrains Mono', monospace; font-size:0.82rem; color:var(--sage);}
+  .byline b{color:var(--ink); font-family:'Work Sans', sans-serif; font-weight:600;}
+
+  .route-stats{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; background:var(--dusk-deep); color:var(--paper); border-radius:16px; padding:22px 20px; margin:36px 0;}
+  .route-stats .stat{text-align:center;}
+  .route-stats .stat .num{display:block; font-family:'JetBrains Mono', monospace; color:var(--amber); font-size:1.15rem;}
+  .route-stats .stat .lbl{font-size:0.7rem; letter-spacing:0.06em; text-transform:uppercase; color:rgba(246,239,228,0.6);}
+
+  article p{margin-bottom:20px; font-size:1.06rem; color:rgba(43,36,32,0.9);}
+  article h2{font-size:1.5rem; margin:42px 0 16px;}
+  article h2 .num{color:var(--clay); font-family:'JetBrains Mono', monospace; font-size:0.9rem; display:block; margin-bottom:6px; letter-spacing:0.06em;}
+
+  blockquote{border-left:3px solid var(--clay); margin:32px 0; padding:6px 0 6px 24px; font-family:'Fraunces', serif; font-style:italic; font-size:1.3rem; color:var(--dusk-deep); line-height:1.5;}
+
+  figure{margin:32px 0;}
+  figure img{width:100%; border-radius:14px; display:block;}
+  figcaption{font-family:'JetBrains Mono', monospace; font-size:0.78rem; color:var(--sage); margin-top:10px;}
+
+  .stop-list{list-style:none; margin:22px 0; padding:0;}
+  .stop-list li{display:flex; gap:16px; padding:16px 0; border-bottom:1px dashed var(--line);}
+  .stop-list .stop-mile{font-family:'JetBrains Mono', monospace; color:var(--clay); font-weight:600; min-width:74px;}
+  .stop-list .stop-name{font-weight:600;}
+  .stop-list .stop-desc{color:rgba(43,36,32,0.65); font-size:0.95rem; display:block; margin-top:2px;}
+
+  .cta-box{background:var(--sand); border-radius:18px; padding:32px; margin:48px 0; text-align:center;}
+  .cta-box h3{margin-bottom:10px;}
+  .cta-box p{color:rgba(43,36,32,0.7); margin-bottom:20px;}
+  .btn{display:inline-flex; align-items:center; gap:8px; padding:13px 26px; border-radius:100px; font-weight:600; font-size:0.95rem; background:var(--clay); color:var(--paper);}
+
+  .gear-box{background:#fff; border:1px solid var(--line); border-radius:18px; padding:28px; margin:44px 0;}
+  .gear-box .gear-tag{font-family:'JetBrains Mono', monospace; font-size:0.72rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--clay); display:block; margin-bottom:10px;}
+  .gear-box h3{font-size:1.2rem; margin-bottom:14px;}
+  .gear-list{list-style:none; padding:0; margin:0;}
+  .gear-list li{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 0; border-bottom:1px dashed var(--line);}
+  .gear-list li:last-child{border-bottom:none;}
+  .gear-list .gear-name{font-weight:600;}
+  .gear-list .gear-desc{display:block; font-size:0.88rem; color:rgba(43,36,32,0.6); font-weight:400; margin-top:2px;}
+  .gear-buy{flex-shrink:0; font-family:'JetBrains Mono', monospace; font-size:0.78rem; font-weight:600; color:var(--clay); border:1.5px solid var(--clay); border-radius:100px; padding:8px 16px; white-space:nowrap;}
+  .gear-buy:hover{background:var(--clay); color:var(--paper);}
+
+  .more-stories{padding:60px 0 80px;}
+  .more-stories h3{font-size:1.1rem; margin-bottom:20px; font-family:'JetBrains Mono', monospace; text-transform:uppercase; letter-spacing:0.06em; color:var(--sage);}
+  .more-list{display:flex; flex-direction:column; gap:14px;}
+  .more-list a{display:block; padding:16px 20px; border:1px solid var(--line); border-radius:12px; transition:border-color .2s ease;}
+  .more-list a:hover{border-color:var(--clay);}
+  .more-list .mt{font-weight:600; font-family:'Fraunces',serif; font-size:1.05rem;}
 
   footer{
-    background:#132628;
+    background:var(--dusk-navy);
     padding:22px 32px;
-    margin-top:0;
+    margin-top:32px;
   }
   .footer-inner{
     max-width:1180px; margin:0 auto;
@@ -56,36 +123,24 @@
     line-height:1;
     letter-spacing:0;
     display:flex; align-items:center; gap:8px;
-    color:#F5EAD6; text-decoration:none;
+    color:var(--paper); text-decoration:none;
   }
-  .footer-logo .gold{font-style:italic; color:#C1502E; font-weight:600;}
+  .footer-logo .gold{color:var(--clay);}
   .footer-logo-icon{width:36px; height:36px; flex-shrink:0;}
   .footer-logo-icon img{display:block; width:100%; height:100%; object-fit:contain;}
   .footer-copy{
     font-family:'JetBrains Mono', monospace; font-size:0.8rem;
-    color:rgba(245,234,214,0.5);
+    color:rgba(246,239,228,0.5);
   }
   .footer-links{
     display:flex; gap:28px; flex-wrap:wrap;
     font-family:'JetBrains Mono', monospace; font-size:0.82rem;
   }
   .footer-links a{
-    color:rgba(245,234,214,0.75); text-decoration:underline;
+    color:rgba(246,239,228,0.75); text-decoration:underline;
     text-underline-offset:3px;
   }
-  .footer-links a:hover{color:#E8A33D;}
-
-  .mile-badge { display: inline-block; background: #1F3A3D; color: #F5EAD6; font-size: 12px; font-weight: 700; letter-spacing: 0.05em; padding: 5px 14px; border-radius: 20px; margin-bottom: 18px; }
-  .hero { max-width: 700px; margin: 0 auto; padding: 40px 24px 10px; }
-  .kicker { font-size: 13px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #C1502E; margin-bottom: 12px; }
-  h1 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 40px; font-weight: 700; line-height: 1.2; margin-bottom: 14px; color: #1F3A3D; }
-  .meta { font-size: 14px; color: #6c8481; margin-bottom: 10px; }
-
-  .content { max-width: 660px; margin: 0 auto; padding: 20px 24px 70px; font-size: 17px; color: #333; }
-  .content p { margin-bottom: 20px; }
-  .pullquote { font-family: 'Playfair Display', serif; font-style: italic; font-size: 22px; color: #1F3A3D; border-left: 3px solid #C1502E; padding-left: 20px; margin: 32px 0; }
-
-
+  .footer-links a:hover{color:var(--amber);}
 </style>
 </head>
 <body>
@@ -110,29 +165,116 @@
 
 <a href="index.html" class="back-home">← Back to Home</a>
 
-<div class="hero">
-  <div class="mile-badge">MILE 1,562</div>
-  <div class="kicker">Traveler Story</div>
-  <h1>Three Days on Highway 12, Utah</h1>
-  <div class="meta">As told by a Roadmere traveler</div>
+<div class="article-hero">
+  <img src="https://images.unsplash.com/photo-1571401835393-8c5f35328320?auto=format&fit=crop&w=1600&q=75" alt="Red rock canyon along Highway 12, Utah">
+  <div class="article-hero-caption">
+    <span class="mile-badge">MILE 1,562</span>
+    <h1>Three Days on Highway 12, Utah</h1>
+  </div>
 </div>
 
-<div class="content">
-  <p>I'd been warned that Highway 12 was scenic. What nobody mentioned was how the road itself seems to know it — how it curves along ridgelines with no guardrail between you and a few hundred feet of open air, like it wants you to feel small on purpose.</p>
+<div class="wrap">
+  <div class="byline">
+    <span><b>3 days</b> on the road</span>
+    <span><b>Bryce Canyon to Torrey</b></span>
+    <span><b>Utah</b></span>
+  </div>
 
-  <p>We started in Bryce Canyon before sunrise, mostly because someone in a gas station the night before told us the hoodoos look like they're on fire at first light. They weren't exaggerating. The rock spires catch the sun before anything else does, and for about ten minutes the whole canyon turns the color of embers.</p>
+  <article>
+    <p>I'd been warned that Highway 12 was scenic. What nobody mentioned was how the road itself seems to know it — how it curves along ridgelines with no guardrail between you and a few hundred feet of open air, like it wants you to feel small on purpose.</p>
 
-  <p>From there, Highway 12 climbs out of Bryce and does something I wasn't ready for — it puts you on a ridge called the Hogback, a stretch where the road narrows and drops away on both sides into canyons hundreds of feet deep. There's nowhere to safely stop and take it in. You just drive it, hands a little tighter on the wheel, trying to watch the road and the view at the same time.</p>
+    <p>What follows isn't a turn-by-turn itinerary — it's closer to a log of three days spent chasing red rock and mountain air, written after the fact from half-remembered overlooks and gas station coffee.</p>
 
-  <div class="pullquote">"You just drive it, hands a little tighter on the wheel, trying to watch the road and the view at the same time."</div>
+    <div class="route-stats">
+      <div class="stat"><span class="num">3</span><span class="lbl">Days</span></div>
+      <div class="stat"><span class="num">124 mi</span><span class="lbl">Total Distance</span></div>
+      <div class="stat"><span class="num">3</span><span class="lbl">Parks Crossed</span></div>
+    </div>
 
-  <p>We stopped for the night in Boulder, Utah — a town so small it barely interrupts the drive, but the kind of place where the one restaurant serves food good enough to make you forget you're in the middle of nowhere. The stars that night were the kind you only get a few hours from the nearest city with real light pollution. No phone signal, no reason to check one anyway.</p>
+    <h2><span class="num">01 — Day 1</span>Bryce Canyon to the Hogback</h2>
+    <p>We started in Bryce Canyon before sunrise, mostly because someone in a gas station the night before told us the hoodoos look like they're on fire at first light. They weren't exaggerating. The rock spires catch the sun before anything else does, and for about ten minutes the whole canyon turns the color of embers.</p>
 
-  <p>Day two took us through Capitol Reef, where the road drops into a canyon lined with old fruit orchards planted by Mormon settlers over a century ago. You can pick fruit in season, straight off public trees, which felt like a strange and generous detail for a place this remote.</p>
+    <blockquote>"You just drive it, hands a little tighter on the wheel, trying to watch the road and the view at the same time."</blockquote>
 
-  <p>By day three, the canyons had opened up into wider desert, and the drive slowed down in a different way — less adrenaline, more just watching the landscape shift color as the afternoon went on. We ended in Torrey, tired in the good way, already talking about which stretch we'd drive slower next time.</p>
+    <figure>
+      <img src="https://images.unsplash.com/photo-1533240332313-0db49b459ad6?auto=format&fit=crop&w=1200&q=70" alt="The Hogback ridge on Highway 12, Utah">
+      <figcaption>The Hogback — a stretch where the road narrows and drops away on both sides into canyons hundreds of feet deep.</figcaption>
+    </figure>
 
-  <p>If you're planning this route: give yourself more time than you think you need. Every overlook we planned to skip ended up being the one we stopped at longest.</p>
+    <p>From Bryce, Highway 12 climbs out and does something I wasn't ready for — it puts you on a ridge called the Hogback, where the road narrows with canyons falling away on both sides. There's nowhere to safely stop and take it in. You just drive it, hands a little tighter on the wheel, trying to watch the road and the view at the same time.</p>
+
+    <ul class="stop-list">
+      <li>
+        <span class="stop-mile mono">DAY 1</span>
+        <div><span class="stop-name">Bryce Canyon at sunrise</span><span class="stop-desc">Arrive before first light — the hoodoos turn ember-colored for about ten minutes.</span></div>
+      </li>
+      <li>
+        <span class="stop-mile mono">DAY 1</span>
+        <div><span class="stop-name">The Hogback ridge</span><span class="stop-desc">No shoulder to stop on — take it slow and let a passenger enjoy the drop.</span></div>
+      </li>
+      <li>
+        <span class="stop-mile mono">DAY 1</span>
+        <div><span class="stop-name">Boulder, Utah</span><span class="stop-desc">A one-restaurant town with food good enough to make you forget how remote it is.</span></div>
+      </li>
+    </ul>
+
+    <p>We stopped for the night in Boulder — a town so small it barely interrupts the drive. The stars that night were the kind you only get a few hours from the nearest real light pollution. No phone signal, no reason to check one anyway.</p>
+
+    <div class="gear-box">
+      <span class="gear-tag">Gear for this route</span>
+      <h3>What made three days on the ridgelines easier</h3>
+      <ul class="gear-list">
+        <li>
+          <div><span class="gear-name">Offline road atlas</span><span class="gear-desc">Cell signal disappears for long stretches — don't rely on a phone map.</span></div>
+          <a href="https://www.amazon.com/s?k=offline+road+atlas+southwest&tag=roadmere07-20" class="gear-buy" target="_blank" rel="nofollow sponsored noopener">Shop →</a>
+        </li>
+        <li>
+          <div><span class="gear-name">Polarized sunglasses</span><span class="gear-desc">The red rock glare on the Hogback is no joke by midday.</span></div>
+          <a href="https://www.amazon.com/s?k=polarized+driving+sunglasses&tag=roadmere07-20" class="gear-buy" target="_blank" rel="nofollow sponsored noopener">Shop →</a>
+        </li>
+        <li>
+          <div><span class="gear-name">Collapsible water jug</span><span class="gear-desc">Fill up before Boulder — options thin out fast between towns.</span></div>
+          <a href="https://www.amazon.com/s?k=collapsible+water+jug+5+gallon&tag=roadmere07-20" class="gear-buy" target="_blank" rel="nofollow sponsored noopener">Shop →</a>
+        </li>
+      </ul>
+    </div>
+
+    <h2><span class="num">02 — Day 2</span>Capitol Reef's orchards</h2>
+    <p>Day two took us through Capitol Reef, where the road drops into a canyon lined with old fruit orchards planted by Mormon settlers over a century ago. You can pick fruit in season, straight off public trees, which felt like a strange and generous detail for a place this remote.</p>
+
+    <figure>
+      <img src="https://images.unsplash.com/photo-1605376046943-8f2ee9b3b7c1?auto=format&fit=crop&w=1200&q=70" alt="Historic orchards in Capitol Reef National Park, Utah">
+      <figcaption>The Fruita orchards in Capitol Reef — pick season runs through the summer and into fall.</figcaption>
+    </figure>
+
+    <h2><span class="num">03 — Day 3</span>Desert light into Torrey</h2>
+    <p>By day three, the canyons had opened up into wider desert, and the drive slowed down in a different way — less adrenaline, more just watching the landscape shift color as the afternoon went on. We ended in Torrey, tired in the good way, already talking about which stretch we'd drive slower next time.</p>
+
+    <p>If you're planning this route: give yourself more time than you think you need. Every overlook we planned to skip ended up being the one we stopped at longest.</p>
+
+    <div class="cta-box">
+      <h3>Plan your own Highway 12 drive</h3>
+      <p>Save the mapped overlooks and stops from this trip — free to browse, no booking required.</p>
+      <a href="index.html#routes" class="btn">Browse Utah routes →</a>
+    </div>
+  </article>
+
+  <div class="more-stories">
+    <h3>More from the road</h3>
+    <div class="more-list">
+      <a href="the-slow-way-through-the-ozarks.html">
+        <span class="mt">The Slow Way Through the Ozarks</span>
+        <span class="stop-desc mono">MILE 214 — Arkansas Ozark Highlands</span>
+      </a>
+      <a href="chasing-sunset-on-highway-1.html">
+        <span class="mt">Chasing Sunset on Highway 1</span>
+        <span class="stop-desc mono">MILE 892 — Big Sur, California</span>
+      </a>
+    </div>
+        <span class="stop-desc mono">MILE 892 — Big Sur, California</span>
+      </a>
+    </div>
+  </div>
 </div>
 
 <footer>
@@ -152,5 +294,6 @@
     </div>
   </div>
 </footer>
+
 </body>
 </html>

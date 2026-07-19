@@ -76,14 +76,41 @@
   .content-pad{ padding: 8px 0 70px; }
 
   /* --- Footer (matches two-weeks-one-van-no-plan.html) --- */
-  footer{background:var(--dusk-navy); padding:22px 32px; margin-top:32px;}
-  .footer-inner{max-width:1180px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;}
+  footer{
+    background:var(--dusk-navy);
+    padding:22px 32px;
+    margin-top:32px;
+  }
+  .footer-inner{
+    max-width:1180px; margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between;
+    flex-wrap:wrap; gap:12px;
+  }
   .footer-brand{display:flex; flex-direction:column; gap:2px;}
-  .footer-logo{font-family:'Fraunces', serif; font-weight:700; font-size:1.3rem; line-height:1; letter-spacing:0; display:flex; align-items:center; gap:8px; color:var(--paper); text-decoration:none;}
+  .footer-logo{
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size:1.3rem;
+    line-height:1;
+    letter-spacing:0;
+    display:flex; align-items:center; gap:8px;
+    color:var(--paper); text-decoration:none;
+  }
   .footer-logo .gold{color:var(--clay);}
-  .footer-copy{font-family:'JetBrains Mono', monospace; font-size:0.8rem; color:rgba(246,239,228,0.5);}
-  .footer-links{display:flex; gap:28px; flex-wrap:wrap; font-family:'JetBrains Mono', monospace; font-size:0.82rem;}
-  .footer-links a{color:rgba(246,239,228,0.75); text-decoration:underline; text-underline-offset:3px;}
+  .footer-logo-icon{width:36px; height:36px; flex-shrink:0;}
+  .footer-logo-icon img{display:block; width:100%; height:100%; object-fit:contain;}
+  .footer-copy{
+    font-family:'JetBrains Mono', monospace; font-size:0.8rem;
+    color:rgba(246,239,228,0.5);
+  }
+  .footer-links{
+    display:flex; gap:28px; flex-wrap:wrap;
+    font-family:'JetBrains Mono', monospace; font-size:0.82rem;
+  }
+  .footer-links a{
+    color:rgba(246,239,228,0.75); text-decoration:underline;
+    text-underline-offset:3px;
+  }
   .footer-links a:hover{color:var(--amber);}
 </style>
 </head>

@@ -1,5 +1,15 @@
 [
   {
+    "href": "four-days-of-fog-on-the-blue-ridge-parkway.html",
+    "image": "https://images.unsplash.com/photo-1530212486532-d957d9c01d3e?auto=format&fit=crop&w=900&q=70",
+    "alt": "Foggy mountain road tunnel through the Blue Ridge Parkway",
+    "gradient": "linear-gradient(160deg,#3A5654,#1F3A3D)",
+    "mile": "MILE 0 → 469",
+    "title": "Four Days of Fog on the Blue Ridge Parkway",
+    "excerpt": "Four hundred and sixty-nine miles, no cell service, and a windshield full of weather — a diary of driving the Blue Ridge Parkway end to end in October.",
+    "readLabel": "Read the route →"
+  },
+  {
     "href": "best-phone-mounts-car-chargers-road-trips-2026.html",
     "image": "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=900&q=70",
     "alt": "Phone mounted on a car dashboard with a charging cable",
@@ -7,7 +17,7 @@
     "mile": "",
     "title": "Best phone mounts & car chargers for road trips",
     "excerpt": "The mounts and chargers that survive potholes, summer heat, and a full car of devices fighting over one outlet.",
-    "readLabel": "Read the guide \u2192"
+    "readLabel": "Read the guide →"
   },
   {
     "href": "the-cooler-that-keeps-up.html",
@@ -16,8 +26,8 @@
     "gradient": "linear-gradient(160deg,#4a8a5f,#1F3A3D)",
     "mile": "",
     "title": "The cooler that keeps up",
-    "excerpt": "Five coolers that actually hold ice past day one \u2014 from budget hard coolers to a 12V fridge that never melts a thing.",
-    "readLabel": "Read the guide \u2192"
+    "excerpt": "Five coolers that actually hold ice past day one — from budget hard coolers to a 12V fridge that never melts a thing.",
+    "readLabel": "Read the guide →"
   },
   {
     "href": "keeping-the-backseat-happy.html",
@@ -26,8 +36,8 @@
     "gradient": "linear-gradient(160deg,#C1502E,#7A3319)",
     "mile": "",
     "title": "Keeping the backseat happy",
-    "excerpt": "What actually beats \"are we there yet?\" \u2014 screen-free games, road-tested tablets, and a rotation trick that buys you hours.",
-    "readLabel": "Read the guide \u2192"
+    "excerpt": "What actually beats \"are we there yet?\" — screen-free games, road-tested tablets, and a rotation trick that buys you hours.",
+    "readLabel": "Read the guide →"
   },
   {
     "href": "the-slow-way-through-the-ozarks.html",
@@ -37,7 +47,7 @@
     "mile": "MILE 214",
     "title": "The slow way through the Ozarks",
     "excerpt": "Three days off the interstate, following creek roads and a hand-drawn map from a gas station in Mountain View.",
-    "readLabel": "Read the route \u2192"
+    "readLabel": "Read the route →"
   },
   {
     "href": "chasing-sunset-on-highway-1.html",
@@ -46,8 +56,8 @@
     "gradient": "linear-gradient(160deg,#E8A33D,#B5701F)",
     "mile": "MILE 892",
     "title": "Chasing sunset on Highway 1",
-    "excerpt": "What happens when you plan for four stops and end up making eleven \u2014 a Big Sur diary.",
-    "readLabel": "Read the route \u2192"
+    "excerpt": "What happens when you plan for four stops and end up making eleven — a Big Sur diary.",
+    "readLabel": "Read the route →"
   },
   {
     "href": "two-weeks-one-van-no-plan.html",
@@ -57,7 +67,7 @@
     "mile": "MILE 1,340",
     "title": "Two weeks, one van, no plan",
     "excerpt": "How a couple mapped the Pacific Northwest with nothing but a full tank and a list of waterfalls.",
-    "readLabel": "Read the route \u2192"
+    "readLabel": "Read the route →"
   },
   {
     "href": "best-car-seats-for-road-trips-2026.html",
@@ -66,8 +76,8 @@
     "gradient": "linear-gradient(160deg,#1F3A3D,#132628)",
     "mile": "",
     "title": "Best car seats for road trips in 2026",
-    "excerpt": "A family buying guide \u2014 convertible seats, travel boosters, and what actually holds up on long drives.",
-    "readLabel": "Read the guide \u2192"
+    "excerpt": "A family buying guide — convertible seats, travel boosters, and what actually holds up on long drives.",
+    "readLabel": "Read the guide →"
   },
   {
     "href": "best-roof-cargo-boxes-family-2026.html",
@@ -77,7 +87,7 @@
     "mile": "",
     "title": "Best roof & cargo boxes for a family of 5",
     "excerpt": "Fitting five people's luggage in one car, without anyone holding a duffel bag for six hours.",
-    "readLabel": "Read the guide \u2192"
+    "readLabel": "Read the guide →"
   },
   {
     "href": "best-portable-potty-travel-bathroom-kits-2026.html",
@@ -87,7 +97,7 @@
     "mile": "",
     "title": "Best portable potty seats & travel bathroom kits",
     "excerpt": "The gear that gets you through \"I have to go potty!\" with the nearest exit twenty minutes away.",
-    "readLabel": "Read the guide \u2192"
+    "readLabel": "Read the guide →"
   },
   {
     "href": "best-road-trip-snacks-mess-free-2026.html",
@@ -97,7 +107,7 @@
     "mile": "",
     "title": "Best road trip snacks for kids: mess-free picks",
     "excerpt": "No-melt, no-crumb, low-sugar snacks that actually survive a hot back seat.",
-    "readLabel": "Read the guide \u2192"
+    "readLabel": "Read the guide →"
   },
   {
     "href": "three-days-on-highway-12-utah.html",
@@ -107,7 +117,7 @@
     "mile": "MILE 1,562",
     "title": "Three Days on Highway 12, Utah",
     "excerpt": "Fire-colored hoodoos at sunrise, the exposed ridge of the Hogback, and orchard-lined canyons in Capitol Reef.",
-    "readLabel": "Read the route \u2192"
+    "readLabel": "Read the route →"
   },
   {
     "href": "best-travel-games-kids-road-trips-2026.html",
@@ -116,7 +126,7 @@
     "gradient": "linear-gradient(160deg,#E8A33D,#7A3319)",
     "mile": "",
     "title": "Best Travel Games for Kids on Road Trips in 2026",
-    "excerpt": "\"Are we there yet?\" has a cure \u2014 screen-free games, road-tested tablets, and a rotation trick that buys you hours.",
-    "readLabel": "Read the guide \u2192"
+    "excerpt": "\"Are we there yet?\" has a cure — screen-free games, road-tested tablets, and a rotation trick that buys you hours.",
+    "readLabel": "Read the guide →"
   }
 ]

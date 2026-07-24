@@ -920,6 +920,58 @@
     #spine-car{transition:none;}
   }
 </style>
+<!-- Paste this inside the <head> of index.html, right before </head> -->
+<!-- Fill in real route data — this example is for one sample route.
+     If you have multiple routes/stories, duplicate this block per route page,
+     or use an ItemList of TouristTrip entries if all routes live on one page. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TouristTrip",
+  "name": "Pacific Coast Highway Road Trip",
+  "description": "A mapped multi-day driving route along the Pacific Coast Highway with traveler-verified stops.",
+  "url": "https://www.roadmere.com/",
+  "touristType": "Road trippers",
+  "itinerary": {
+    "@type": "ItemList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "TouristAttraction",
+          "name": "Stop 1 name here"
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "TouristAttraction",
+          "name": "Stop 2 name here"
+        }
+      }
+    ]
+  },
+  "provider": {
+    "@type": "Organization",
+    "name": "Roadmere",
+    "url": "https://www.roadmere.com/"
+  }
+}
+</script>
+
+<!-- Organization schema — put this in the head of every page -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Roadmere",
+  "url": "https://www.roadmere.com/",
+  "logo": "https://www.roadmere.com/og-image.jpg",
+  "description": "Plan road trip routes, read stories from travelers who drove them first, and book ready-mapped trips and flights."
+}
+</script>
 </head>
 <body>
 
